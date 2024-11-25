@@ -1,0 +1,72 @@
+#devis-content {
+  font-family: 'Arial', sans-serif;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+}
+
+#devis-content h2, h3 {
+  color: #333333;
+  margin-left: 20px;
+  margin-bottom: -1px;
+}
+
+#devis-content p {
+  font-size: 16px;
+  color: #555555;
+  margin: 5px 20px;
+  font-style: normal;
+}
+
+/* Style for the table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #f2f2f2;
+  color: #333333;
+}
+
+/* Highlight alternate lines */
+tr:nth-child(even) {background-color: #f9f9f9;}
+
+/* Style for the export button */
+button {
+  background-color: #df2c2c; /* Green color */
+  color: white;
+  padding: 10px 20px;
+  margin: 20px 0;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 45%;
+}
+tr {
+  page-break-inside: avoid !important;
+}
+
+button:hover {
+  background-color: #6e0a0a;
+}
+
+@page {
+  size: A4;
+  margin: 10mm; /* Adjust the page margins as necessary */
+}

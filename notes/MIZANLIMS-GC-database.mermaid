@@ -1,0 +1,145 @@
+erDiagram
+    clients {
+        bigint id PK
+        bigint status_id FK
+        varchar(255) address
+        varchar(255) email
+        varchar(255) name
+        varchar(255) note
+        varchar(255) tel
+    }
+    
+    contacts {
+        bigint id PK
+        bigint profession_id FK
+        varchar(255) address
+        varchar(255) email
+        varchar(255) name
+        varchar(255) note
+        varchar(255) tel
+        varchar(255) whatsapp
+    }
+    
+    contacts_clients {
+        bigint id PK
+        bit(1) is_principal
+        bigint client_id FK
+        bigint contact_id FK
+        bigint project_id
+    }
+    
+    devis {
+        bigint devis_id PK
+        int devis_discount
+        int devis_discountp
+        int montant
+        int montant_remise
+        int montant_tva
+        int tva
+        bit(1) tva_present
+        bigint project_id FK
+        bigint status_id FK
+        varchar(25) ref_devis
+        varchar(255) annee
+        varchar(255) creation_date
+        varchar(255) datedemarage
+        varchar(255) devis_note
+    }
+    
+    element {
+        bigint id PK
+        bigint type_id FK
+        varchar(255) name UK
+        varchar(255) note
+    }
+    
+    element_devis {
+        bigint id PK
+        int element_qty
+        int montant
+        int nbre_lots
+        int prix_unitaire
+        bigint element_id FK
+        bigint status_id FK
+        bigint task_id FK
+        varchar(255) element_note
+        varchar(255) name
+        varchar(255) ref_edevis UK
+    }
+    
+    priorite {
+        bigint id PK
+        varchar(255) label UK
+    }
+    
+    profession {
+        bigint id PK
+        varchar(255) label UK
+    }
+    
+    projects {
+        bigint project_id PK
+        bigint bct_id FK
+        bigint client_id FK
+        bigint situation_id FK
+        bigint status_id FK
+        varchar(255) ref_projet UK
+        varchar(255) title
+        varchar(255) annee
+        varchar(255) project_localisation
+        varchar(255) project_mo
+        varchar(255) project_moe
+        varchar(255) date_de_creation
+    }
+    
+    situation {
+        bigint id PK
+        varchar(255) labels UK
+    }
+    
+    status {
+        bigint id PK
+        varchar(255) label
+        varchar(255) tableref
+    }
+    
+    task {
+        bigint task_id PK
+        date task_deadline
+        date task_start
+        int total_task
+        bigint devis_id FK
+        bigint priority_id FK
+        bigint project_id FK
+        bigint status_id FK
+        varchar(255) ref_task UK
+        varchar(255) task_name
+        varchar(255) task_note
+    }
+    
+    type {
+        bigint id PK "was id_type"
+        varchar(255) label UK
+    }
+    
+    unite {
+        bigint id PK
+        varchar(255) unite UK
+    }
+
+    clients ||--o{ contacts_clients : "has"
+    contacts ||--o{ contacts_clients : "belongs_to"
+    status ||--o{ clients : "has"
+    projects ||--o{ devis : "has"
+    clients ||--o{ projects : "has"
+    situation ||--o{ projects : "has"
+    status ||--o{ projects : "has"
+    type ||--o{ element : "has"
+    element ||--o{ element_devis : "has"
+    status ||--o{ element_devis : "has"
+    task ||--o{ element_devis : "has"
+    profession ||--o{ contacts : "has"
+    projects ||--o{ task : "has"
+    devis ||--o{ task : "has"
+    priorite ||--o{ task : "has"
+    status ||--o{ task : "has"

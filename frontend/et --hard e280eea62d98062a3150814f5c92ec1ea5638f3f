@@ -1,0 +1,269 @@
+[33mcommit 8142fb1b0189ce0f68b789be0a937d93c0b3b420[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Merge: 6aad5f7d e280eea6
+Author: tekeyber <21060@supnum.mr>
+Date:   Mon Mar 18 14:19:41 2024 +0100
+
+    data table pour projet
+
+[33mcommit e280eea62d98062a3150814f5c92ec1ea5638f3f[m
+Author: Melike21033 <21033@supnum.mr>
+Date:   Mon Mar 18 14:06:16 2024 +0000
+
+    sala7t client contact w tarif
+
+[33mcommit 6aad5f7dc51a677004210a46279d651b3e18e651[m
+Author: tekeyber <21060@supnum.mr>
+Date:   Mon Mar 18 14:07:55 2024 +0100
+
+    imprimer devis
+
+[33mcommit bda8045e72acd4b94f04d8902c197ce5fc931bdf[m
+Author: Melike21033 <21033@supnum.mr>
+Date:   Fri Mar 15 12:14:29 2024 +0000
+
+    m7yt angular.zip
+
+[33mcommit f076ba6d321ecfb08b4dc9cac45489ed36740cf2[m
+Author: Melike21033 <21033@supnum.mr>
+Date:   Fri Mar 15 12:12:35 2024 +0000
+
+    sala7t libeler en francais w tri
+
+[33mcommit 92e9b6951a0074cdeefe3e14e9e348a7e144b5e2[m
+Author: tekeyber <21060@supnum.mr>
+Date:   Fri Mar 15 12:14:23 2024 +0100
+
+    projet contact sla7
+
+[33mcommit 2eb2f6dbd7ad0462630303c67d26b47651c4ade6[m
+Author: Melike21033 <21033@supnum.mr>
+Date:   Thu Mar 14 14:46:06 2024 +0000
+
+    vih tous les datatable
+
+[33mcommit 20de6a9886f7a8766f18f3ac0e1f961f50e0b209[m
+Merge: 84be7b72 8deb1bd5
+Author: tekeyber <21060@supnum.mr>
+Date:   Thu Mar 14 15:18:53 2024 +0100
+
+    datatable da7sse
+
+[33mcommit 8deb1bd51d13c56b4acabd6a23d66648edda3eae[m
+Author: Melike21033 <21033@supnum.mr>
+Date:   Thu Mar 14 10:01:19 2024 +0000
+
+    data table v unite w tarif w type w element
+
+[33mcommit 84be7b72e648cc42ad4e5756936006cb4968c927[m
+Author: tekeyber <21060@supnum.mr>
+Date:   Wed Mar 13 11:52:28 2024 +0100
+
+    titre projet obligaoire, l'unite est unique,l'ordre des champs element devis
+
+[33mcommit 93837a09b262653d1a9f06b42a5482a02237f8f0[m
+Merge: e4d7da43 89f05726
+Author: Melike21033 <21033@supnum.mr>
+Date:   Wed Mar 13 10:13:28 2024 +0000
+
+    datatable l unite w type ye da7se
+
+[33mcommit e4d7da43f9e0778b1517860313bc993a28da661a[m
+Author: Melike21033 <21033@supnum.mr>
+Date:   Tue Mar 12 13:48:29 2024 +0000
+
+    gitgnore w datatable type w unite
+
+[33mcommit 9c9567d0297def73bb5359d4290489739ffe4947[m
+Author: Melike21033 <21033@supnum.mr>
+Date:   Tue Mar 12 13:24:45 2024 +0000
+
+    data table l unite w type
+
+[33mcommit 89f05726a310fa5b242753f3a64972ae4408dd47[m
+Author: Melike21033 <21033@supnum.mr>
+Date:   Tue Mar 12 09:12:50 2024 +0000
+
+    nsyt update devis
+
+[33mcommit 971854bf5840c2f731f07cd3bcc4a7e92ef0d5e3[m
+Author: Melike21033 <21033@supnum.mr>
+Date:   Tue Mar 12 09:12:50 2024 +0000
+
+    nsyt update devis
+
+[33mcommit a883171da4d5d3ef01f9d994441bc9d04b6dcf3c[m
+Author: Melike21033 <21033@supnum.mr>
+Date:   Tue Mar 12 09:07:09 2024 +0000
+
+    sala7t update
+
+[33mcommit 2db67cd68c79cdc74fcd0411816a29c75785a376[m
+Author: Melike21033 <21033@supnum.mr>
+Date:   Tue Mar 12 09:07:09 2024 +0000
+
+    sala7t update
+
+[33mcommit 779d151b8c1d63e8936a29523c6b7c24d5640451[m
+Merge: 7f63575a 6f6fb842
+Author: tekeyber <21060@supnum.mr>
+Date:   Mon Mar 11 16:56:22 2024 +0100
+
+    Merge branch 'master' of https://github.com/Melike21033/pi_s6_frontend
+
+[33mcommit 7f63575ae443abb95a9ae3d08ed813bc6732b459[m
+Author: tekeyber <21060@supnum.mr>
+Date:   Mon Mar 11 16:55:22 2024 +0100
+
+    ref projet saisi,visualiser les contacts d'un projet
+
+[33mcommit 6f6fb842a2282cdfa615978a29a42130391d3100[m
+Author: Melike21033 <21033@supnum.mr>
+Date:   Mon Mar 11 14:59:57 2024 +0000
+
+    devis tache wsala7t rwayat 5rattt
+
+[33mcommit a1149b04adc44960d6bb10aa919d225d62ac732e[m
+Merge: bf6a5cad 1e4ce6ce
+Author: Melike21033 <21033@supnum.mr>
+Date:   Mon Mar 11 14:58:51 2024 +0000
+
+    Merge branch 'master' of https://github.com/Melike21033/pi_s6_frontend
+
+[33mcommit bf6a5cad88b39813e8654f44c6ed3e5dda7c24c4[m
+Author: Melike21033 <21033@supnum.mr>
+Date:   Mon Mar 11 14:58:22 2024 +0000
+
+    devis tache wsala7t rwayat 5rat
+
+[33mcommit 1e4ce6cee4666b7c3e447b6ce9b1d60468fafe33[m
+Author: tekeyber <21060@supnum.mr>
+Date:   Thu Mar 7 16:41:55 2024 +0100
+
+    add task to devis and delete task from devis
+
+[33mcommit ff1b607f6f328b789f07e78f28de497f261db125[m
+Author: Melike21033 <21033@supnum.mr>
+Date:   Thu Mar 7 12:53:16 2024 +0000
+
+    devisf
+
+[33mcommit 3417a6e90870103d70229b8f5fb419a17cec449b[m
+Merge: b2534693 bef832d8
+Author: Melike21033 <21033@supnum.mr>
+Date:   Thu Mar 7 12:41:34 2024 +0000
+
+    Merge branch 'master' of https://github.com/Melike21033/pi_s6_frontend
+
+[33mcommit b25346933af66d0e346c2de3bdfefdcfaf2c0c94[m
+Author: Melike21033 <21033@supnum.mr>
+Date:   Thu Mar 7 12:41:15 2024 +0000
+
+    3adelt frontend devif w modifeyt v app routing
+
+[33mcommit bef832d8b2b6ea38a57071db700f3f505b2b1b36[m
+Merge: f1db14f9 73ea07cb
+Author: tekeyber <21060@supnum.mr>
+Date:   Thu Mar 7 12:37:17 2024 +0100
+
+    Merge branch 'master' of https://github.com/Melike21033/pi_s6_frontend
+
+[33mcommit f1db14f97c4db7eb2ae05ab7b950a3f69bd88d93[m
+Author: tekeyber <21060@supnum.mr>
+Date:   Thu Mar 7 12:36:25 2024 +0100
+
+    date fin =debut+8 et methode pour recuperer les taches qui n'ont pas un devis et une  methode pour recuperer les taches d'un devis
+
+[33mcommit 73ea07cb4065d3dda3168581a11cd5ac710ceb49[m
+Author: Melike21033 <21033@supnum.mr>
+Date:   Wed Mar 6 16:53:53 2024 +0000
+
+    creyeyt component devif w devistache w configureythum v approuting
+
+[33mcommit 16e72e8ef278991bcc783986b1dc72cf3bab4de7[m
+Merge: 5d388b7c 3f847651
+Author: Melike21033 <21033@supnum.mr>
+Date:   Wed Mar 6 16:52:42 2024 +0000
+
+    Merge branch 'master' of https://github.com/Melike21033/pi_s6_frontend
+
+[33mcommit 5d388b7c2dd302bcb41cd61862d6ce12763066ad[m
+Author: Melike21033 <21033@supnum.mr>
+Date:   Wed Mar 6 16:51:16 2024 +0000
+
+    creyeyt component devif w devistache w configureythum v approuting
+
+[33mcommit 3f8476515e061b237143e1ff8fcf768d3bcf2747[m
+Merge: 4d55e2c6 0a153b3d
+Author: tekeyber <21060@supnum.mr>
+Date:   Wed Mar 6 16:45:25 2024 +0100
+
+    Merge branch 'master' of https://github.com/Melike21033/pi_s6_frontend
+
+[33mcommit 4d55e2c6b16d4ce7cf3e187efac4ee5fbd60b54f[m
+Author: tekeyber <21060@supnum.mr>
+Date:   Wed Mar 6 16:44:52 2024 +0100
+
+    l'indexation commence par 0 maintenat + l'affichage des informations du projet lors de l'ajout d'une tache
+
+[33mcommit 0a153b3d937caeee54a7bec5723f349bee42cabf[m
+Author: Melike21033 <21033@supnum.mr>
+Date:   Wed Mar 6 15:29:39 2024 +0000
+
+    meesyt contact kamle w projet kamle w tarif kamle
+
+[33mcommit 58371b3dbc8eaaeb8103b0674af5951f24351961[m
+Author: Melike21033 <21033@supnum.mr>
+Date:   Tue Mar 5 12:55:45 2024 +0000
+
+    kj
+
+[33mcommit 2d75c24496827a47bb09ccb8949730ec0ffbfc9c[m
+Merge: 3797e228 44e645e0
+Author: tekeyber <21060@supnum.mr>
+Date:   Tue Mar 5 12:15:50 2024 +0100
+
+    les libelles en francais
+
+[33mcommit 44e645e0c14b9f7697edf43e75ce3261cdb038d6[m
+Merge: c4a1a574 83f62646
+Author: Melike21033 <21033@supnum.mr>
+Date:   Tue Mar 5 11:11:32 2024 +0000
+
+    Merge branch 'master' of https://github.com/Melike21033/pi_s6_frontend
+
+[33mcommit c4a1a574c9f1c2d165615ee68d8f8b27e60f8fdb[m
+Author: Melike21033 <21033@supnum.mr>
+Date:   Tue Mar 5 11:11:00 2024 +0000
+
+    mn3rv
+
+[33mcommit 3797e228154a62afd8fc987c37b9448d9a0e0c37[m
+Author: tekeyber <21060@supnum.mr>
+Date:   Tue Mar 5 11:42:50 2024 +0100
+
+    les libeles en fr
+
+[33mcommit 83f62646cb0df1ba8aeb66cfc91b1a1bbf7486b7[m
+Merge: e8c9ffbd 724675ea
+Author: tekeyber <21060@supnum.mr>
+Date:   Tue Mar 5 01:55:39 2024 +0100
+
+    les conflits du front sont resolus
+
+[33mcommit e8c9ffbd59847f39c68e25878fde01cdef61b835[m
+Author: tekeyber <21060@supnum.mr>
+Date:   Tue Mar 5 01:44:57 2024 +0100
+
+    les conflits du front sont resolus
+
+[33mcommit 724675eaa0e1e18f0a2f3e5e8b6fdb603b58ce78[m
+Author: Melike21033 <21033@supnum.mr>
+Date:   Mon Mar 4 19:17:25 2024 +0000
+
+    front-end
+
+[33mcommit 2d02c4c5132e879b7917f82b247e1daf1cd7a508[m
+Author: Melike21033 <21033@supnum.mr>
+Date:   Tue Feb 27 11:11:43 2024 +0000
+
+    premiere commit

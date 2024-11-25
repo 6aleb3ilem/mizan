@@ -1,0 +1,95 @@
+
+<div id="modalBackground" class="modal">
+  <div>
+      <div class="modal-content">
+          <span class="close" id="closeModalBtn" (click)="closeModal()">&times;</span>
+          <h3>Ajouter Projet</h3>
+          <div class="iii">
+              <form #projectForm="ngForm" (ngSubmit)="addProject()">
+<div><div style="display: inline-block;">
+                  <label for="titreProjet">Titre du projet <span class="required">*</span></label>
+                  <input type="text" id="titreProjet" placeholder="Entrez le Titre du projet" name="titreProjet" [(ngModel)]="newProject.title"
+                      #title="ngModel" required>
+                  
+                  </div><div style="display: inline-block;">
+                  <label for="ClientProjet">Client du Projet :</label>
+                  <ng-select id="ClientProjet" style="::ng-deep .ng-placeholder{margin-left: 10px;}" [(ngModel)]="selectedClient" name="client" class="select" #clientSelect="ngModel" placeholder="Selectionner un client" notFoundText="Not Found" required>
+                    <ng-option *ngFor="let client of clients" [value]="client.id">{{ client.name }}</ng-option>
+                  </ng-select>
+</div></div>
+<div>
+    <div  style="display: inline-block;width:260px">
+        <div *ngIf="title.invalid && (projectForm.submitted || title.dirty || title.touched)"
+        style="color: red;margin-left: 10px;font-size: small;margin-top: -12px;margin-bottom: 27px;">
+        Le titre du projet est obligatoire.
+    </div>
+    </div>
+    <div  style="display: inline-block;">
+        <div *ngIf="!selectedClient && (projectForm.submitted || clientSelect.touched || clientSelect.dirty)" style="color: red;margin-left: 10px;font-size: small;margin-top: -12px;margin-bottom: 27px;">Veuillez sélectionner un client.</div>
+    </div>
+</div>
+<div style="margin-top: -20px;"><div style="display: inline-block;">
+    <label for="ProjetMO">Maître d'Oeuvre du Projet :</label>
+    <input placeholder="Entrez le maître d'Oeuvre du projet" type="text" id="ProjetMO" [(ngModel)]="newProject.projectMO" name="updatedProjectMO" >
+  </div>
+    <div style="display: inline-block;">
+                  <label for="ProjetMOE">Maître d'Ouvrage du Projet :</label>
+                  <input type="text" id="ProjetMOE" placeholder="Entrez le maître d'ouvrage du projet"
+                      [(ngModel)]="newProject.projectMOE" name="ProjetMOE">
+</div></div><div>
+    <div style="display: inline-block;">
+                  <label for="DateCreation">Date de Création :</label>
+                  <input type="date" id="DateCreation" placeholder="Entrez la date de création du projet"
+                      [(ngModel)]="newProject.creationDate" name="DateCreation" (change)="updateYear()">
+    
+                  <input type="hidden" id="Annee" placeholder="Année" [(ngModel)]="newProject.annee" name="Annee"
+                      disabled>
+</div><div  style="display: inline-block;">
+                  <label for="refProjet">Référence du projet :</label>
+                  <input type="text" id="refProjet" placeholder="Référence du projet"
+                      [(ngModel)]="newProject.refProjet" name="refProjet" #refProjet="ngModel" required>
+                  
+</div></div>
+<div>
+    
+    <div style="display: inline-block;width: 260px;"></div><div style="display: inline-block;">
+        <div *ngIf="(refProjet.invalid && (projectForm.submitted || refProjet.dirty || refProjet.touched))"
+                      style="color: red;margin-left: 10px;font-size: small;margin-top: -12px;margin-bottom: 10px;">
+                      La référence du projet est obligatoire.
+                  </div>
+    </div></div>
+<div style="margin-top: -18px;">
+
+<div style="display: inline-block;">
+                  <label for="ProjetBct" style="margin-bottom: 5px;">BCT du Projet :</label>
+        <!-- <div style="margin-left: 8px;"> -->
+        <ng-select bindValue="jgt" id="bctId" class="select custom-ng-select" [(ngModel)]="newProject.projectBCT.id" name="bctId" >
+          <ng-option *ngFor="let bct of bct" [value]="bct.id"> {{ bct.label }} </ng-option>
+        </ng-select>
+</div><div style="display: inline-block;">
+        <label for="SituationId" style="margin-bottom: 5px;">Situation :</label>
+        <!-- <div style="margin-left: 8px;"> -->
+        <ng-select style="::ng-deep .ng-placeholder{margin-left: -50px;}" bindValue="jgt" id="SituationId" class="select custom-ng-select" [(ngModel)]="newProject.situation.id" name="SituationId" >
+          <ng-option *ngFor="let situation of situation" [value]="situation.id"> {{ situation.label }} </ng-option>
+        </ng-select>
+</div></div>
+<div>
+    <div style="display: inline-block;margin-top: 10px;">
+        <label for="professionId" style="margin-bottom: 5px;">Statut :</label>
+        <!-- <div style="margin-left: 8px;"> -->
+        <ng-select style="::ng-deep .ng-placeholder{margin-left: -50px;}" bindValue="jgt" id="professionId" class="select custom-ng-select" [(ngModel)]="newProject.status.id" name="professionId" >
+          <ng-option *ngFor="let status of Status" [value]="status.id" [hidden]="status.tableref !== 'projet'"> {{ status.label }} </ng-option>
+        </ng-select>
+    </div>
+    
+    
+</div>
+                  <div style="width: 107.6%;background-color: #A9F4F9;margin-left: -20px;height: 70px;text-align:center; margin-top: 30px;">
+                      <button type="submit" id="saveBtn" style="margin-top: 15px;margin-left: 440px" [disabled]="isAdding">Ajouter</button>
+                  </div>
+                  <!-- <div>Form submitted: {{ projectForm.submitted }}</div> -->
+              </form>
+          </div>
+      </div>
+  </div>
+</div>

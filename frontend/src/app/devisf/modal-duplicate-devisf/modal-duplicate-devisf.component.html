@@ -1,0 +1,23 @@
+<!-- Modal pour la sélection du projet -->
+<div class="modal" id="modalBackgroundupplicate">
+  <div class="modal-content">
+    <span class="close" id="closeModalBtn" (click)="closeModalDupplicate()">&times;</span>
+    <h2>Dupliquer ce devis dans le projet</h2>
+    <select [(ngModel)]="selectedProjectId">
+      <option *ngFor="let project of projects" [value]="project.projectId">{{ project.title }}</option>
+    </select>
+    <br><br>
+    <button (click)="duplicateDevis()">Dupliquer</button>
+    <div id="duplicationErrorMessage" style="display: none;">Ce devis est déjà dupliqué dans ce projet.</div>
+  </div>
+</div>
+
+<!-- Modal pour la barre de progression -->
+<div class="modal" id="modalProgress">
+  <div class="modal-content">
+    <h2>Duplication en cours</h2>
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+  </div>
+</div>

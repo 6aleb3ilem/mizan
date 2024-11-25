@@ -1,0 +1,148 @@
+<!-- modaladdDevisf.component.html -->
+<div id="modalBackground" class="modal">
+    <div class="modal-content" [ngStyle]="{'height': modalHeight}">
+        <span class="close" id="closeModalBtn" (click)="closeModal()">&times;</span>
+        <h3>Ajouter Devis</h3>
+        <form>
+          <div>
+            <div>
+              <div style="display: flex;align-items: center;">
+              <hr style="width: 180px;margin-left: 10px;">
+              <label>Remise et Tva:</label>
+              <hr style="width: 180px;margin-left: 10px;">
+            </div>
+              <div style="display: flex;width: 500px;">
+                <div style="display: flex;">
+                <label for="checkboxDiscount">Montant:</label>
+                <input style="width: 10px;margin-top: -2px;" type="checkbox" id="checkboxDiscount" [checked]="showDiscount" (change)="onCheckboxChange('discount')" name="discount">
+              </div>
+                <div style="display: flex;margin-left: 100px;">
+                <label for="checkboxDiscountP">pourcentage:</label>
+                <input style="width: 10px;margin-top: -2px;" type="checkbox" id="checkboxDiscountP" [checked]="showDiscountP" (change)="onCheckboxChange('discountP')" name="discountP">
+              </div>
+              <div style="display: flex;margin-left: 100px;">
+                <label  for="tvaCheckbox">TVA:</label>
+                  <input style="width: 10px;margin-top: -2px;" type="checkbox" id="tvaCheckbox" [checked]="applyTVA" [(ngModel)]="newDevisf.tva_present" (change)="onCheckboxChange('tva')" name="tvaCheckbox"></div>
+              </div>
+              </div>
+            </div>
+            <div>
+              <div *ngIf="showDiscount" style="display: inline-block;">
+                <label style="font-weight: 100;margin-bottom: -20px;margin-top: -5px;" for="tvaValue">Mnontant:</label><br>
+                <input type="number" id="newDevisfdiscount" [(ngModel)]="newDevisf.discount" (ngModelChange)="updateFieldStatus()" required placeholder="Entrez le discount du devis" name="newDevisfdiscount">
+              </div>
+              <div *ngIf="showDiscountP" style="display: inline-block;">
+                <label style="font-weight: 100;margin-bottom: -20px;margin-top: -5px;" for="tvaValue">Pourcentage(%) :</label><br>
+                <input type="number" id="newDevisfdiscountp" [(ngModel)]="newDevisf.discountp" (ngModelChange)="updateFieldStatus()" required placeholder="Entrez le discount en pourcentage du devis" name="newDevisfdiscountp">
+              </div>
+              <div *ngIf="newDevisf.tva_present" style="display: inline-block;">
+                <label style="font-weight: 100;margin-bottom: -20px;margin-top: -5px;" for="tvaValue">Valeur TVA (%) :</label><br>
+                <input type="number" id="tvaValue" [(ngModel)]="newDevisf.tva" name="tvaValue"   placeholder="Entrez la valeur de la TVA">
+              </div>
+            </div>
+            <hr style="width: 500px;margin-top: -5px;margin-bottom: 20px;">
+            <div>
+              <div style="display: inline-block;">
+            <label style="margin-bottom: -15px;" for="newDevisfdate">Date :</label><br>
+            <input class="input" type="date" id="newDevisfdate" [(ngModel)]="newDevisf.creationDate" name="newDevisfdate" (change)="onDateChangeAndUpdateYear($event)"><br>
+          </div>
+          <div style="display: inline-block;">
+            <label for="refDevis">Référence du devis :</label>
+            <input class="input" type="text" id="refDevis" placeholder="Référence du devis" [(ngModel)]="newDevisf.ref_devis" name="refDevis" #refProjet="ngModel" required>
+          </div>
+          <div style="display: inline-block;">
+            <label style="margin-bottom: -15px;" for="newDevisfStatus">Statut :</label><br>
+            <select class="input" id="professionId" [(ngModel)]="newDevisf.status.id" name="professionId" >
+              <option *ngFor="let status of Status" [value]="status.id" [hidden]="status.tableref !== 'devis'"> {{ status.label }} </option>
+            </select>  
+          </div>
+        </div>
+        <div style="display: flex;align-items: center;">
+          <hr style="width: 170px;margin-left: 10px;">
+          <label>Conditions de l'offre:</label>
+          <hr style="width: 170px;margin-left: 10px;">
+        </div>
+        <div>
+          <label>Remise du rapport</label>
+          <input type="text" disabled value="apres" class="input">
+          <input class="input" type="number" name="remise" [(ngModel)]="remise" (ngModelChange)="updateRemiseRapport()">
+          <select class="input" name="remiserapportselect" [(ngModel)]="remiserapportselect" (ngModelChange)="updateRemiseRapport()">
+            <option value="jour">jour</option>
+            <option value="mois">mois</option>
+            <option value="annes">annes</option>
+          </select>
+
+        </div>
+        <div>
+            <div>
+              <label>Modalite de paiement</label>
+              <div class="container">
+                <div class="input-group" *ngIf="isVisible(1)">
+                  <input style="width: 80px;" type="number" placeholder="%" class="input1" name="MP1" [(ngModel)]="newDevisf.mp1">
+                  <select class="select3" [(ngModel)]="newDevisf.pmp1" name="PMP1">
+                      <option value="% a l' avence">a l'avence</option>
+                      <option value="% a la remise du rapport">a la remise du rapport</option>
+                      <option value="% a l' approbation du rapport">a l' approbation du rapport</option>
+                      <option value="% en fonction du volume des travaux réalisés">en fonction du volume des travaux réalisés</option>
+                      <option value="Proportionnellement aux travaux réalisés">Proportionnellement aux travaux réalisés</option>
+                  </select>
+                </div>
+                <div class="input-group" *ngIf="isVisible(2)">
+                  <input style="width: 80px;" type="number" placeholder="%" class="input1" name="MP2" [(ngModel)]="newDevisf.mp2">
+                  <select class="select3" [(ngModel)]="newDevisf.pmp2" name="PMP2">
+                    <option value="% a l' avence">a l'avence</option>
+                    <option value="% a la remise du rapport">a la remise du rapport</option>
+                    <option value="% a l' approbation du rapport">a l' approbation du rapport</option>
+                    <option value="% en fonction du volume des travaux réalisés">en fonction du volume des travaux réalisés</option>
+                    <option value="Proportionnellement aux travaux réalisés">Proportionnellement aux travaux réalisés</option>
+                  </select>
+                </div>
+              <div class="input-group" *ngIf="isVisible(3)">
+                  <input style="width: 80px;" type="number" placeholder="%" class="input1" name="MP3" [(ngModel)]="newDevisf.mp3">
+                  <select class="select3" [(ngModel)]="newDevisf.pmp3" name="PMP3">
+                    <option value="% a l' avence">a l'avence</option>
+                    <option value="% a la remise du rapport">a la remise du rapport</option>
+                    <option value="% a l' approbation du rapport">a l' approbation du rapport</option>
+                    <option value="% en fonction du volume des travaux réalisés">en fonction du volume des travaux réalisés</option>
+                    <option value="Proportionnellement aux travaux réalisés">Proportionnellement aux travaux réalisés</option>
+                  </select>
+                </div>
+              <div class="input-group" *ngIf="isVisible(4)">
+                  <input style="width: 80px;" type="number" placeholder="%" class="input1" name="MP4" [(ngModel)]="newDevisf.mp4">
+                  <select class="select3" [(ngModel)]="newDevisf.pmp4" name="PMP4">
+                    <option value="% a l' avence">a l'avence</option>
+                    <option value="% a la remise du rapport">a la remise du rapport</option>
+                    <option value="% a l' approbation du rapport">a l' approbation du rapport</option>
+                    <option value="% en fonction du volume des travaux réalisés">en fonction du volume des travaux réalisés</option>
+                    <option value="Proportionnellement aux travaux réalisés">Proportionnellement aux travaux réalisés</option>
+                  </select>
+                </div>
+              <div class="input-group" *ngIf="isVisible(5)">
+                  <input style="width: 80px;" type="number" placeholder="%" class="input1" name="MP5" [(ngModel)]="newDevisf.mp5">
+                  <select class="select3" [(ngModel)]="newDevisf.pmp5" name="PMP5">
+                    <option value="% a l' avence">a l'avence</option>
+                    <option value="% a la remise du rapport">a la remise du rapport</option>
+                    <option value="% a l' approbation du rapport">a l' approbation du rapport</option>
+                    <option value="% en fonction du volume des travaux réalisés">en fonction du volume des travaux réalisés</option>
+                    <option value="Proportionnellement aux travaux réalisés">Proportionnellement aux travaux réalisés</option>
+                  </select>
+                </div>
+              <button style="margin-left: 2px;" id="addButton" class="button" (click)="addInput()" [hidden]="numInputs >= maxInputs">+</button>
+              <button id="removeButton" style="margin-left: 2px;" class="button" (click)="removeInput()" [hidden]="numInputs <= 1">-</button>
+
+              </div>
+            </div>
+            <!-- Champ d'entrée pour la valeur de la TVA qui s'affiche si la case est cochée -->
+            <hr style="width: 500px;margin-top: 10px;margin-bottom: 20px;">
+
+            <div>
+              <label for="newDevisfNote">Note :</label><br>
+            <textarea id="newDevisfNote" [(ngModel)]="newDevisf.note" name="newDevisfNote" required placeholder="Entrez une note pour le devis"></textarea><br>
+            </div>
+          </div>
+          <div style="width: 107.7%;background-color: #A9F4F9;margin-left: -20px;height: 70px;">
+          <button (click)="addDevisf()" style="margin-top: 15px;margin-left: 445px;">Ajouter</button></div>
+        </form>
+    </div>
+  </div>
+  

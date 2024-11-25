@@ -1,0 +1,120 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  
+}
+::ng-deep .ng-dropdown-panel {
+  background-color: #fcf6f6; /* Couleur de fond de la liste déroulante */
+  border: 1px solid #bababa; /* Bordure de la liste déroulante */
+  margin-left: -10px;
+  margin-top:6px;
+  font-size: small;
+  width: 95%;
+  box-sizing: border-box; /* Inclure les bordures dans la taille */
+
+}
+
+/* Style pour le texte "Sélectionner une profession" dans la liste déroulante */
+::ng-deep .ng-placeholder {
+  color: #fffdfd; /* Couleur du texte en mode placeholder */
+  font-style: italic; /* Style italic pour le texte */
+  height: 10px;
+}
+
+/* Style pour les options de la liste déroulante */
+::ng-deep .ng-option {
+  padding: 8px 12px; /* Espacement interne des options */
+  box-sizing: border-box;
+}
+
+/* Autres styles pour la classe select */
+.select {
+  width: 250px;
+  padding: 10px;
+  margin: 5px 0 15px;
+  box-sizing: border-box;
+  margin-left: 8px;
+  border-radius: 2px;
+  background-color: #ffffff;
+  border: 1px solid #bababa;
+  
+}
+
+.modal-content {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 525px;
+  height: 450px;
+  margin-top: 9.9%;
+  margin-bottom: -10%;
+}
+textarea{
+  width: 95%;
+  padding: 10px;
+  margin: -25px 0 15px;
+  box-sizing: border-box;
+  margin-left: 8px;
+  resize: none; /* Empêche le redimensionnement */
+  border-radius: 2px;
+  height: 85px;
+  margin-top: -10px;
+}
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+}
+
+label {
+  display: block;
+  margin: 0 0 5px;
+  font-weight: bold;
+  color: #333;
+  margin-left: 10px;
+  margin-top: -5px;
+  margin-bottom: -5px;
+}
+
+input {
+  width: 250px;
+  padding: 10px;
+  margin: -25px 0 15px;
+  box-sizing: border-box;
+  margin-left: 8px;
+  border-radius: 2px;
+  
+}
+
+button {
+  background-color: #FF833E;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 80px;
+}
+.required {
+  color: red;
+}

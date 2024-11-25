@@ -1,0 +1,230 @@
+Client Management Flow
+
+
+clients store company/client information
+contacts store individual contact information
+contacts_clients links contacts to clients and marks primary contacts
+profession categorizes contact roles (e.g., Manager, Engineer)
+
+
+Project Management Flow
+
+
+projects is the central table connecting clients to their projects
+Each project has:
+
+Location (project_localisation)
+Owner (project_mo)
+Engineer (project_moe)
+Creation date
+Status and situation tracking
+Unique reference number
+
+
+
+
+Task Management Flow
+
+
+task tracks all project tasks
+Each task has:
+
+Start and deadline dates
+Priority level
+Status
+Can be linked to quotes (devis)
+Notes and reference numbers
+
+
+
+
+Quote/Estimate Flow
+
+
+devis handles project quotes/estimates
+element_devis stores detailed line items
+element defines reusable items/services
+type categorizes elements
+unite handles units of measurement
+
+
+Status and Classification Tables
+
+
+status tracks state across all relevant tables
+situation tracks project phases
+priorite sets task importance levels
+bct (kept from original) for project classification
+
+
+
+
+since there is signup, login, forgot password and super admin dashboard with other 5 modules each module with its pages and functionalities(now we are only concerned about the Commercial module) what should the layout of the website look like and how can i approach the build of the ui and ux 
+
+for our commercial management here is the data base schema 
+
+CREATE TABLE bct (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    label VARCHAR(255) UNIQUE,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE status (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    label VARCHAR(255),
+    tableref VARCHAR(255),
+    PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE situation (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    labels VARCHAR(255) UNIQUE,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE profession (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    label VARCHAR(255) UNIQUE,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE priorite (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    label VARCHAR(255) UNIQUE,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE type (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    label VARCHAR(255) UNIQUE,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE unite (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    unite VARCHAR(255) UNIQUE,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE clients (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    status_id BIGINT,
+    address VARCHAR(255),
+    email VARCHAR(255),
+    name VARCHAR(255),
+    note VARCHAR(255),
+    tel VARCHAR(255),
+    PRIMARY KEY (id),
+    FOREIGN KEY (status_id) REFERENCES status(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE contacts (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    profession_id BIGINT,
+    address VARCHAR(255),
+    email VARCHAR(255),
+    name VARCHAR(255),
+    note VARCHAR(255),
+    tel VARCHAR(255),
+    whatsapp VARCHAR(255),
+    PRIMARY KEY (id),
+    FOREIGN KEY (profession_id) REFERENCES profession(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE projects (
+    project_id BIGINT NOT NULL AUTO_INCREMENT,
+    bct_id BIGINT,
+    client_id BIGINT,
+    situation_id BIGINT,
+    status_id BIGINT,
+    ref_projet VARCHAR(255) UNIQUE,
+    title VARCHAR(255),
+    annee VARCHAR(255),
+    project_localisation VARCHAR(255),
+    project_mo VARCHAR(255),
+    project_moe VARCHAR(255),
+    date_de_creation VARCHAR(255),
+    PRIMARY KEY (project_id),
+    FOREIGN KEY (bct_id) REFERENCES bct(id),
+    FOREIGN KEY (client_id) REFERENCES clients(id),
+    FOREIGN KEY (situation_id) REFERENCES situation(id),
+    FOREIGN KEY (status_id) REFERENCES status(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE devis (
+    devis_id BIGINT NOT NULL AUTO_INCREMENT,
+    project_id BIGINT,
+    status_id BIGINT,
+    devis_discount INT,
+    devis_discountp INT,
+    montant INT NOT NULL,
+    montant_remise INT NOT NULL,
+    montant_tva INT NOT NULL,
+    tva INT,
+    tva_present BIT(1),
+    ref_devis VARCHAR(25),
+    annee VARCHAR(255),
+    creation_date VARCHAR(255),
+    datedemarage VARCHAR(255),
+    devis_note VARCHAR(255),
+    PRIMARY KEY (devis_id),
+    FOREIGN KEY (project_id) REFERENCES projects(project_id),
+    FOREIGN KEY (status_id) REFERENCES status(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE element (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    type_id BIGINT,
+    name VARCHAR(255) UNIQUE,
+    note VARCHAR(255),
+    PRIMARY KEY (id),
+    FOREIGN KEY (type_id) REFERENCES type(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE task (
+    task_id BIGINT NOT NULL AUTO_INCREMENT,
+    project_id BIGINT NOT NULL,
+    devis_id BIGINT,
+    priority_id BIGINT,
+    status_id BIGINT,
+    task_deadline DATE,
+    task_start DATE,
+    total_task INT NOT NULL,
+    ref_task VARCHAR(255) UNIQUE,
+    task_name VARCHAR(255),
+    task_note VARCHAR(255),
+    PRIMARY KEY (task_id),
+    FOREIGN KEY (project_id) REFERENCES projects(project_id),
+    FOREIGN KEY (devis_id) REFERENCES devis(devis_id),
+    FOREIGN KEY (priority_id) REFERENCES priorite(id),
+    FOREIGN KEY (status_id) REFERENCES status(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE element_devis (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    element_id BIGINT,
+    status_id BIGINT,
+    task_id BIGINT,
+    element_qty INT,
+    montant INT,
+    nbre_lots INT,
+    prix_unitaire INT,
+    element_note VARCHAR(255),
+    name VARCHAR(255),
+    ref_edevis VARCHAR(255) UNIQUE,
+    PRIMARY KEY (id),
+    FOREIGN KEY (element_id) REFERENCES element(id),
+    FOREIGN KEY (status_id) REFERENCES status(id),
+    FOREIGN KEY (task_id) REFERENCES task(task_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE contacts_clients (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    client_id BIGINT NOT NULL,
+    contact_id BIGINT NOT NULL,
+    project_id BIGINT,
+    is_principal BIT(1),
+    PRIMARY KEY (id),
+    FOREIGN KEY (client_id) REFERENCES clients(id),
+    FOREIGN KEY (contact_id) REFERENCES contacts(id)
+) ENGINE=InnoDB DEFAULT 

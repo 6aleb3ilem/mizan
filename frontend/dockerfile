@@ -1,0 +1,20 @@
+# Use the specific Node.js version for building the Angular application
+FROM node:20.10.0 AS build
+
+# Define the working directory
+WORKDIR /app
+
+# Copy the Angular project files into the container
+COPY . .
+
+# Install dependencies and build the Angular application
+RUN npm install && npm run build
+
+# Use the NGINX image to serve the built Angular application
+FROM nginx:latest
+
+# Copy the built Angular application files to the NGINX directory
+COPY --from=build /app/dist/sidebar /usr/share/nginx/html
+
+# Expose port 80
+EXPOSE 80

@@ -1,0 +1,64 @@
+<!-- modalAddElementDevis.component.html -->
+<div id="modalBackground" class="modal">
+  <div>
+      <div class="modal-content">
+          <span class="close" id="closeModalBtn" (click)="closeModal()">&times;</span>
+          <h3>Ajouter Élément au Devis</h3>
+          <hr style="width: 565px;margin-left: -20px;">
+          <form (submit)="addItem()">
+              <div class="iii">
+                <div style="display: flex;">
+                <div style="display: inline-block;">
+                <label style="margin-top: 5px;" for="element">Nom de l'element :</label>
+                <ng-select style="margin-top: 10px;" bindValue="jgt" class="select" id="element" [(ngModel)]="newItem.elementid" name="newelement" (change)="onElementChange($event)">
+                  <ng-option *ngFor="let element of elements" [value]="element.id">{{ element.name }}</ng-option>
+                </ng-select>
+                </div>
+                <div style="display: inline-block;">
+                  <label for="elementStatus" style="margin-top: 5px;">Type  de l'élément :</label>
+                  <input type="text" id="elementType" [(ngModel)]="newItem.type" name="newelementype" [value]="selectedElementType" placeholder="Entrez le type de l'élément" >
+                </div></div>
+                <div>
+                  <div style="display: inline-block;">
+                  <label for="unite">Unité de l'élément :</label>
+                  <select class="select" bindValue="jgt" id="unite" [(ngModel)]="newItem.unite" name="newelementUnite" >
+                    <option *ngFor="let unite of unites" [value]="unite.unite" [selected]="unitePrincipale && unite.unite === unitePrincipale.unite">{{ unite.unite }}</option>
+                  </select>                  
+                </div><div style="display: inline-block;">
+                  <label for="prix_unitaire">Le prix unitaire de l'élément :</label>
+                  <input type="number" [(ngModel)]="newItem.prix_unitaire" name="newelementPrixUnitaire" id="elementPrixUnitaire" placeholder="Entrez Le prix unitaire" (ngModelChange)="calculateMontant()">
+                </div></div>
+                <div>
+                  <div style="display: inline-block;">
+                  <label for="elementQty">Quantité de l'élément :</label>
+                  <input type="number" id="elementQty" [(ngModel)]="newItem.elementQty" name="newelementQty" placeholder="Entrez la quantité de l'élément" (ngModelChange)="calculateMontant()">
+                </div><div style="display: inline-block;">
+                  <label for="montant">Montant de l'élément :</label>
+                  <input type="number" disabled="" [(ngModel)]="newItem.montant" name="newelementMontant" id="elementMontant" placeholder="Entrez le montant de l'élément">
+                </div></div><div>
+                  <div style="display: inline-block;">
+                  <label for="montant">nbreLots de l'élément :</label>
+                  <input type="number"  [(ngModel)]="newItem.nbreLots" name="newelementnbreLots" id="elementnbreLots" placeholder="Entrez le nbreLots de l'élément" (ngModelChange)="calculateMontant()">
+                </div><div style="display: inline-block;">
+                </div><div style="display: inline-block;">
+                  
+                  <label for="TacheStatus">Statut de l'element du devis :</label>
+                  <select bindValue="jgt" class="select" id="statusId" [(ngModel)]="newItem.status.id" name="statusId">
+                    <option *ngFor="let status of Status" [value]="status.id" [hidden]="status.tableref !== 'elementdevis'">{{ status.label }}</option>
+                  </select>  
+
+                </div></div>
+                  <label for="elementNote">Note de l'élément :</label>
+                  <textarea [(ngModel)]="newItem.elementNote" name="newelementNote" id="elementNote" placeholder="Entrez la note de l'élément">
+                  </textarea>       
+                </div>
+                <!-- <label for="elementqteLots">qteLots  de l'élément :</label> -->
+                <input type="hidden" id="elementType" [(ngModel)]="newItem.qteLots" name="newelementqteLots"  placeholder="Entrez le qteLots de l'élément" >
+   
+              <div style="width: 565px;background-color: #A9F4F9;margin-left: -20px;height: 70px;">
+                  <button id="saveBtn" style="margin-top: 15px;margin-left: 460px;" (click)="addItem()" [disabled]="isAdding">Ajouter</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>

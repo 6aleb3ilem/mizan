@@ -1,0 +1,21 @@
+<!-- modalupdatePriorite.component.html -->
+<div id="modalBackgroundupdate" class="modal">
+    <div>
+        <div class="modal-content">
+          <span class="close" id="closeModalBtn" (click)="closeModalUpdate()">&times;</span>
+          <h3>Mettre à jour le priorite</h3>
+          <hr style="width: 338.2px;margin-left: -20px;">
+          <form (ngSubmit)="updatePriorite()" #updateForm="ngForm">
+            <div class="iii" *ngIf="updatedPriorite">
+              <label for="PrioriteNom">Libellé du priorite</label>
+              <input id="updatedPrioriteName" [(ngModel)]="updatedPriorite.label" name="updatedPrioriteName" required>
+      
+            </div>
+            <div style="width: 113.5%;background-color: #A9F4F9;margin-left: -20px;height: 70px;">
+              <button priorite="submit" id="saveBtn" style="margin-top: 15px;margin-left: 210px;" (click)="updatePriorite()">Mettre à jour</button>
+            </div>
+          </form>    
+        </div>
+    </div>
+  </div>
+  

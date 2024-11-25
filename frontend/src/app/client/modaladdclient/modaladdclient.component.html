@@ -1,0 +1,55 @@
+<div id="modalBackground" class="modal">
+  <div>
+    <div class="modal-content">
+      <span class="close" id="closeModalBtn" (click)="closeModal()">&times;</span>
+      <h3>Ajouter un client</h3> 
+      <hr style="width: 564px;margin-left: -20px;margin-bottom: 10px;">
+      <form #clientForm="ngForm" (submit)="addClient()">
+        <div class="iii">
+          <div style="display: flex;">
+            <div>
+          <label for="newClientName">Nom du client : <span class="required">*</span></label><br>
+          <input id="newClientName" [(ngModel)]="newClient.name" name="newClientName" placeholder="Entrez le nom du client" required #nom="ngModel">
+          <div *ngIf="nom.invalid && (clientForm.submitted || nom.dirty || nom.touched)" style="color: red;margin-left: 10px;font-size: small;margin-top: -12px;margin-bottom: 10px;">
+            Le nom du client est obligatoire.
+          </div>
+        </div><div>
+          <label for="newClientEmail">Email :</label><br>
+
+          <input type="text" id="newClientEmail" [(ngModel)]="newClient.email" name="newClientEmail" placeholder="Entrez l'email du client" #email="ngModel">
+          <div *ngIf="!isValidEmail(newClient.email) && (clientForm.submitted || email.dirty || email.touched)" style="color: red;margin-left: 10px;font-size: small;margin-top: -12px;margin-bottom: 10px;">
+            Veuillez entrer une adresse email valide.
+          </div>
+        </div>
+      </div>
+      <div style="display: flex;">
+        <div>
+          <label for="newClientTelephone">Téléphone : <span class="required">*</span></label><br>
+          <input type="number" id="newClientTelephone" [(ngModel)]="newClient.telephone" name="newClientTelephone" placeholder="Entrez le téléphone du client" required #telephone="ngModel">
+          <div *ngIf="telephone.invalid && (clientForm.submitted || telephone.dirty || telephone.touched)" style="color: red;margin-left: 10px;font-size: small;margin-top: -12px;margin-bottom: 10px;">
+            Le téléphone du client est obligatoire.
+          </div>
+        </div><div>
+          <label for="newClientAddress">Adresse :</label><br>
+          <input id="newClientAddress" [(ngModel)]="newClient.address" name="newClientAddress" placeholder="Entrez l'adresse du client"><br>
+        </div>
+      </div>
+      <div style="display: flex;">
+        <div>
+          <label for="professionId" style="margin-bottom: 5px;">Statut :</label>
+          <!-- <div style="margin-left: 8px;"> -->
+          <select id="professionId" [(ngModel)]="newClient.status.id" name="professionId" >
+            <option *ngFor="let status of Status" [value]="status.id" [hidden]="status.tableref !== 'client'"> {{ status.label }} </option>
+          </select>
+          <!-- </div> -->
+        </div></div>
+          <label for="newClientNote">Note :</label><br>
+          <textarea id="newClientNote" [(ngModel)]="newClient.note" name="newClientNote" placeholder="Entrez une note pour le client"></textarea><br>
+        </div>
+        <div style="width: 565px;background-color: #A9F4F9;margin-left: -20px;height: 70px;">
+          <button type="submit" id="saveBtn" style="margin-top: 15px;margin-left: 450px;" (click)="addClient()" [disabled]="isAdding">Ajouter</button> <!-- Texte en français -->
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

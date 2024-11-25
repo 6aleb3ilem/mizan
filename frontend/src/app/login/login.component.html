@@ -1,0 +1,37 @@
+<div class="verification-container">
+  <button class="back-button" (click)="goBack()">
+    <i class="fa fa-arrow-left"></i>
+  </button>
+  <form (ngSubmit)="login()" class="verification-form" [formGroup]="loginForm">
+    <div class="form-content">
+      <h2>Connexion</h2>
+      <div class="form-field">
+        <label for="username">Email</label>
+        <input type="text" id="username" placeholder="email" formControlName="username" required>
+        <div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched" class="error-message">
+          <small *ngIf="loginForm.get('username')?.errors?.['required']">Email is required.</small>
+          <small *ngIf="loginForm.get('username')?.errors?.['email']">Invalid email format.</small>
+        </div>
+      </div>
+      <div class="form-field">
+        <label for="password">Mot de Passe</label>
+        <div class="password-container">
+          <input [type]="showPassword ? 'text' : 'password'" id="password" placeholder="mot de passe" formControlName="password" required>
+          <i class="fa" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'" (click)="toggleShowPassword()"></i>
+        </div>
+        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="error-message">
+          <small *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</small>
+        </div>
+      </div>
+      <div *ngIf="errorMessage" class="general-error-message">
+        {{ errorMessage }}
+      </div>
+      <div class="form-buttons">
+        <button type="submit" [disabled]="loginForm.invalid">Connexion</button>
+      </div>
+    </div>
+    <div class="form-image">
+      <img src="assets/Login.png" alt="Logo de l'Application">
+    </div>
+  </form>
+</div>

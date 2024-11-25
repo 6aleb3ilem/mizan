@@ -1,0 +1,58 @@
+<!-- modaladdtache.component.html -->
+<div id="modalBackground" class="modal">
+  <div>
+      <div class="modal-content">
+          <span class="close" id="closeModalBtn" (click)="closeModal()">&times;</span>
+          <div style="display: flex;">
+          <h3>Ajouter une tâche</h3>
+          <!-- <label style="margin-top: 7px;margin-left: 180px;" for="ProjectName">{{projet?.refProjet}}       {{projet?.title}}   {{projet?.client?.name}}  </label> -->
+        </div>
+          <hr style="width: 564px;margin-left: -20px;">
+          <form #tacheForm="ngForm" (submit)="addTache()">
+              <div class="iii">
+                
+                <div style="display: flex;margin-top: 20px;" >
+                  <div>
+                  <label for="TacheName">Nom de la Tâche :</label>
+                  <ng-select class="select" name="newtacheName" id="TacheName" required #nom="ngModel" [(ngModel)]="newTache.taskName">
+                    <ng-option *ngFor="let tache of filteredTachename" [value]="tache.label">{{ tache.label }}</ng-option>
+                  </ng-select>
+                  <div *ngIf="nom.invalid && (tacheForm.submitted || nom.dirty || nom.touched)" style="color: red;margin-left: 10px;font-size: small;margin-top: -12px;margin-bottom: 10px;">
+                    Le nom du tache est obligatoire.
+                  </div>
+                </div><div>
+                   <label for="TachePriority">Priorité de la Tâche :</label>
+                  <ng-select #priorite="ngModel" id="prioriteId" bindValue="jgt" [(ngModel)]="newTache.priority.id" name="prioriteId" class="select" required>
+                    <ng-option *ngFor="let priorite of Priorites" [value]="priorite.id">{{ priorite.label }}</ng-option>
+                  </ng-select>
+                  <div *ngIf="priorite.invalid && (tacheForm.submitted || priorite.dirty || priorite.touched)" style="color: red;margin-left: 10px;font-size: small;margin-top: -12px;margin-bottom: 10px;">
+                    La priorite du tache est obligatoire.
+                  </div>
+                </div>
+              </div><div style="display: flex;">
+                <div>
+                  <label style="margin-bottom: 10px;" for="TacheStart">Début de la Tâche :</label>
+                  <input type="date" [(ngModel)]="newTache.start" name="newtacheStart" id="TacheStart" placeholder="Entrez le début de la tâche" (change)="calculateEndDate()">
+                </div><div>
+                  <label style="margin-bottom: 10px;"  for="TacheDeadline">Date limite de la Tâche :</label>
+                  <input type="date" [(ngModel)]="newTache.deadline" name="newtacheDeadline" id="TacheDeadline" placeholder="Entrez la date limite de la tâche">
+
+                </div>
+              </div>
+                  <label for="TacheStatus">Statut de la Tâche :</label>
+                  <ng-select id="statusId" bindValue="jgt" #status="ngModel" [(ngModel)]="newTache.status.id" name="statusId" class="select" required>
+                    <ng-option *ngFor="let status of Status" [value]="status.id" [hidden]="status.tableref !== 'tache'">{{ status.label }}</ng-option>
+                  </ng-select>
+                  <div *ngIf="status.invalid && (tacheForm.submitted || status.dirty || status.touched)" style="color: red;margin-left: 10px;font-size: small;margin-top: -12px;margin-bottom: 10px;">
+                    Le status du tache est obligatoire.
+                  </div>
+                  <label style="margin-bottom: 20px;" for="TacheNote">Note de la Tâche :</label>
+                  <textarea type="text" [(ngModel)]="newTache.note" name="newtacheNote" id="TacheNote" placeholder="Entrez la note de la tâche"></textarea>
+              </div>
+              <div style="width: 565px;background-color: #A9F4F9;margin-left: -20px;height: 70px;">
+                  <button type="submit" id="saveBtn" style="margin-top: 15px;margin-left: 450px;" (click)="addTache()" [disabled]="isAdding">Ajouter</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>

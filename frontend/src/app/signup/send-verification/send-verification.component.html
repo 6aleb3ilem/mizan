@@ -1,0 +1,22 @@
+<div class="verification-container">
+    <button class="back-button" (click)="goBack()">
+        <i class="fa fa-arrow-left"></i>
+      </button>
+    <form (ngSubmit)="sendVerificationCode()" class="verification-form">
+      <div class="form-content">
+        <h2>Vérification de l'Email</h2>
+        <div class="form-field">
+          <label for="email">Email</label>
+          <input type="email" id="email" [(ngModel)]="email" name="email" required>
+        </div>
+        <div class="form-buttons">
+          <button type="submit">Envoyer le Code</button>
+        </div>
+        <div *ngIf="emailExistsError" class="error-message">L'email n'existe pas</div>
+      </div>
+      <div class="form-image">
+        <img src="assets/signup.png" alt="Logo de l'Application">
+      </div>
+    </form>
+  </div>
+  

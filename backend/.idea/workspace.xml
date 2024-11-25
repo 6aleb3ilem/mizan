@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="47143030-ac8b-4f28-b812-2b051595363b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mizanlabs/mr/controller/ProfessionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mizanlabs/mr/controller/ProfessionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mizanlabs/mr/controller/SituationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mizanlabs/mr/controller/SituationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mizanlabs/mr/controller/StatusController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mizanlabs/mr/controller/StatusController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mizanlabs/mr/entities/Situation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mizanlabs/mr/entities/Situation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mizanlabs/mr/repository/BctRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mizanlabs/mr/repository/BctRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mizanlabs/mr/repository/SituationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mizanlabs/mr/repository/SituationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mizanlabs/mr/repository/StatusRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mizanlabs/mr/repository/StatusRepository.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenRunner">
+    <option name="skipTests" value="true" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2cvGdE63F9pR69bTNytNAB60KDr" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;JUnit.com.mizanlabs.mr.entities in mizanbase.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.com.mizanlabs.mr.repository in mizanbase.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.mizanbase [clean,install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.mizanbase [clean].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/med edine/Desktop/pi_mizan_final_version/MizanBasefinal/MizanBase&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\med edine\Desktop\pi_mizan_final_version\MizanBasefinal\MizanBase\src\main\resources\fonts\mizantimebold" />
+      <recent name="C:\Users\med edine\Desktop\pi_mizan_final_version\MizanBasefinal\MizanBase\src\main\resources\fonts\Mizantimenewroman" />
+      <recent name="C:\Users\med edine\Desktop\pi_mizan_final_version\MizanBasefinal\MizanBase\src\main\resources\fonts\mizantimeitalic" />
+      <recent name="C:\Users\med edine\Desktop\pi_mizan_final_version\MizanBasefinal\MizanBase\src\main\resources\fonts\mizanCalibriBold" />
+      <recent name="C:\Users\med edine\Desktop\pi_mizan_final_version\MizanBasefinal\MizanBase\src\main\resources\fonts\mizanCalibri" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\med edine\Desktop\pi_mizan_final_version\MizanBasefinal\MizanBase\src\main\resources" />
+      <recent name="C:\Users\med edine\Desktop\pi_mizan_final_version\MizanBasefinal\MizanBase\src\main\resources\jasper\fonts\Mizantimenewroman" />
+      <recent name="C:\Users\med edine\Desktop\pi_mizan_final_version\MizanBasefinal\MizanBase\src\main\resources\jasper\fonts" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.mizanlabs.mr.service" />
+      <recent name="com.mizanlabs.mr.repository" />
+      <recent name="com.mizanlabs.mr.entities" />
+      <recent name="com.mizanlabs.mr.controller" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn clean install" />
+      <command value="mvn clean" />
+    </option>
+  </component>
+  <component name="RunManager" selected="JUnit.com.mizanlabs.mr.entities in mizanbase">
+    <configuration name="com.mizanlabs.mr.entities in mizanbase" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mizanbase" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.mizanlabs.mr.entities.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.mizanlabs.mr.entities" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="com.mizanlabs.mr.repository in mizanbase" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mizanbase" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.mizanlabs.mr.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.mizanlabs.mr.repository" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="MizanBase" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="MizanBase" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.com.mizanlabs.mr.entities in mizanbase" />
+        <item itemvalue="JUnit.com.mizanlabs.mr.repository in mizanbase" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.1-openjdk-21.0.1-4caba194b151-23eed401" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="47143030-ac8b-4f28-b812-2b051595363b" name="Changes" comment="" />
+      <created>1708984723384</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1708984723384</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>

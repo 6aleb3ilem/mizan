@@ -1,0 +1,10 @@
+<!-- import-modaltarif.component.html -->
+<div id="importModalBackground" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModalBtn" (click)="closeModalimp()">&times;</span>
+    <h2>Importer des tarifs</h2>
+    <input type="file" accept=".xlsx, .xls" (change)="onFileChange($event)" />
+    <div style="width: 113.5%;background-color: #A9F4F9;margin-left: -20px;height: 70px;">
+    <button style="margin-top: 15px;margin-left: 230px;" (click)="importData()">Importer</button></div>
+  </div>
+  </div>

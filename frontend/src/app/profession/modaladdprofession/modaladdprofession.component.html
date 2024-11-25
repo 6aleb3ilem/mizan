@@ -1,0 +1,21 @@
+<!-- modaladdProfession.component.html -->
+<div id="modalBackground"  class="modal">
+    <div>
+      
+    <div class="modal-content">
+      <span class="close" id="closeModalBtn" (click)="closeModal()">&times;</span>
+      <h3>Ajouter un profession</h3>
+      <hr style="width: 338.2px;margin-left: -20px;margin-bottom: 10px;">
+      <form (submit)="addProfession()">
+      <div class="iii">
+     
+        <label for="newProfessionName">Libellé du profession :</label><br>
+        <input id="newProfessionName" [(ngModel)]="newProfession.label" name="newProfessionName" required placeholder="Entrez Profession Nom"><br>
+      </div>
+      <div style="width: 113.5%;background-color: #A9F4F9;margin-left: -20px;height: 70px;">
+        <button id="saveBtn" style="margin-top: 15px;margin-left: 230px;"  (click)="addProfession()" [disabled]="isAdding">Ajouter</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>

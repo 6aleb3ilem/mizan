@@ -1,0 +1,25 @@
+<!-- modaladdelement.component.html -->
+
+<div id="modalBackground"  class="modal">
+  <div>
+    
+  <div class="modal-content">
+    <span class="close" id="closeModalBtn" (click)="closeModal()">&times;</span>
+    <h3>Ajouter un élément</h3>
+    <hr style="width: 338.2px;margin-left: -20px;margin-bottom: 10px;">
+    <form (submit)="addElement()">
+    <div class="iii">
+      <label for="newElementName">Nom de l'élément :</label><br>
+      <input id="newElementName" [(ngModel)]="newElement.name" name="newElementName" required placeholder="Entrez le nom de l'élément"><br>
+      <label for="newElementnote">Note de l'élément :</label><br>
+      <textarea id="newElementnote" [(ngModel)]="newElement.note" name="newElementnote" required placeholder="Entrez la note de l'élément"></textarea><br>
+      <label for="newElementtype">Type de l'élément :</label><br>
+      <select id="newElementtype" [(ngModel)]="newElement.type" name="newElementtype" required>
+          <option *ngFor="let type of types" [ngValue]="type">{{ type.label }}</option>
+        </select><br>      </div>
+    <div style="width: 113.5%;background-color: #A9F4F9;margin-left: -20px;height: 70px;">
+      <button id="saveBtn" style="margin-top: 15px;margin-left: 230px;"  (click)="addElement()" [disabled]="isAdding">Ajouter</button>
+    </div>
+    </form>
+</div>
+</div>

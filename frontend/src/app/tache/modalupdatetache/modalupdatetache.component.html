@@ -1,0 +1,56 @@
+<!-- modalupdatetache.component.html -->
+<div id="modalBackgroundupdate" class="modal">
+  <div>
+      <div class="modal-content">
+          <span class="close" id="closeModalBtn" (click)="closeModalUpdate()">&times;</span>
+          <h3>Mettre à jour la tâche</h3>
+          <hr style="width: 564px;margin-left: -20px;">
+          <form #updateForm="ngForm">
+              <div class="iii" *ngIf="updatedTache">
+                <div style="display: flex;">
+                  <div>
+                <label for="TacheName">Nom de la tâche :</label>
+                <ng-select class="select" name="updatedTacheName" id="TacheName" #nom="ngModel" [(ngModel)]="updatedTache.taskName" required>
+                  <ng-option *ngIf="updatedTache" [value]="updatedTache.taskName">{{ updatedTache.taskName }}</ng-option>
+                  <ng-option *ngFor="let tacheref of filteredTachename" [value]="tacheref.label">{{ tacheref.label }}</ng-option>
+                </ng-select>   
+                <div *ngIf="nom.invalid && (updateForm.submitted || nom.dirty || nom.touched)" style="color: red;margin-left: 10px;font-size: small;margin-top: -12px;margin-bottom: 10px;">
+                  Le nom du tache est obligatoire.
+                </div>   
+              </div><div>
+                  <label for="TachePriority">Priorité de la tâche :</label>
+                <ng-select class="select" id="newTacheUnite" #priorite="ngModel" [(ngModel)]="updatedTache.priority.id" name="newTacheUnite" required>
+                  <ng-option *ngFor="let priorite of Priorites" [value]="priorite.id">{{ priorite.label }}</ng-option>
+                </ng-select>  
+                <div *ngIf="priorite.invalid && (updateForm.submitted || priorite.dirty || priorite.touched)" style="color: red;margin-left: 10px;font-size: small;margin-top: -12px;margin-bottom: 10px;">
+                  La priorite du tache est obligatoire.
+                </div>  
+              </div>
+            </div><div style="display: flex;">
+              <div>
+                <label  style="margin-bottom: 10px;" for="TacheStart">Début de la tâche :</label>
+                <input type="date" [(ngModel)]="updatedTache.start" name="updatedTacheStart" id="TacheStart" (change)="calculateEndDate()">
+              </div><div>
+                <label  style="margin-bottom: 10px;" for="TacheDeadline">Date limite de la tâche :</label>
+                <input type="date" [(ngModel)]="updatedTache.deadline" name="updatedTacheDeadline" id="TacheDeadline">
+              </div>
+            </div>
+                <label for="TacheStatus">Statut de la tâche :</label>
+                <ng-select class="select" id="newTacheUnite" #status="ngModel" [(ngModel)]="updatedTache.status.id" name="newTacheUnite" required >
+                  <ng-option *ngFor="let status of Status" [value]="status.id" [hidden]="status.tableref !== 'tache'">{{ status.label }}</ng-option>
+                </ng-select>  
+                <div *ngIf="status.invalid && (updateForm.submitted || status.dirty || status.touched)" style="color: red;margin-left: 10px;font-size: small;margin-top: -12px;margin-bottom: 10px;">
+                  Le status du tache est obligatoire.
+                </div>   
+                
+                <label style="margin-bottom: 20px;" for="TacheNote">Note de la tâche :</label>
+                <textarea type="text" [(ngModel)]="updatedTache.note" name="updatedTacheNote" id="TacheNote"></textarea>
+                
+              </div>
+              <div style="width: 565px;background-color: #A9F4F9;margin-left: -20px;height: 70px;">
+                <button type="submit" id="saveBtn" style="margin-top: 15px;margin-left: 430px;" (click)="updateTache()">Mettre à jour</button>
+            </div>
+          </form>
+      </div>
+  </div>
+</div>

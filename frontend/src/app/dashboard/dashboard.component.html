@@ -1,0 +1,25 @@
+<div class="dashboard-container">
+  <header>
+    <h1>Dashboard</h1>
+  </header>
+  <div class="controls">
+    <label for="entitySelect">Sélectionnez l'entité :</label>
+    <select id="entitySelect" (change)="onEntityChange($event)">
+      <option value="tasks">Tâches</option>
+      <option value="projects">Projets</option>
+      <option value="devis">Devis</option>
+      <option value="elementdevis">Éléments de devis</option>
+    </select>
+   
+  </div>
+  <label class="label" for="entitySelect">Répartition des {{displayName}}</label>
+  <div class="chart-container">
+    <div echarts [options]="pieChartOptions" class="echart"></div>
+    <div echarts [options]="barChartOptions" class="echart"></div>
+  </div>
+  <div class="chart-container">
+    <div echarts [options]="lineChartOptions" class="echart"></div>
+    <div echarts [options]="scatterChartOptions" class="echart"></div>
+  </div>
+
+</div>

@@ -1,0 +1,52 @@
+<script src="node_modules/select2/dist/js/select2.min.js"></script>
+<div id="modalBackground" class="modal">
+  <div>
+    <div class="modal-content">
+      <span class="close" id="closeModalBtn" (click)="closeModal()">&times;</span>
+      <h3>Ajouter un contact</h3> <!-- Texte traduit en français -->
+      <hr style="width: 564px;margin-left: -20px;margin-bottom: 10px;">
+      <form #contactForm="ngForm" (ngSubmit)="addContact()">
+        <div class="iii">
+          <div style="display: flex;">
+            <div>
+          <label for="newContactName">Nom : <span class="required">*</span></label><br>
+          <input id="newContactName" [(ngModel)]="newContact.name" name="newContactName" required #newContactName="ngModel" placeholder="Entrez le nom du contact" required #nom="ngModel"><br>
+          <div *ngIf="nom.invalid && (contactForm.submitted || nom.dirty || nom.touched)" style="color: red;margin-left: 10px;font-size: small;margin-top: -12px;margin-bottom: 10px;">
+            Le nom du contact est obligatoire.
+          </div></div><div>
+          <label for="newContacttelephone">Téléphone :</label><br>
+          <input type="number" id="newContacttelephone" [(ngModel)]="newContact.telephone" name="newContacttelephone" (change)="onTelephoneChange()" placeholder="Entrez le téléphone du contact"><br>
+        </div></div><div style="display: flex;">
+          <div>
+          <label for="newContactWhatsApp">Numéro WhatsApp :</label><br>
+          <input type="number" id="newContactWhatsApp" [(ngModel)]="newContact.whatsapp" name="newContactWhatsApp" (change)="onWhatsAppChange()" placeholder="Entrez le numéro WhatsApp du contact"><br>
+          </div><div>
+          <label for="newContactEmail">Email :</label><br>
+          <input id="newContactEmail" [(ngModel)]="newContact.email" name="newContactEmail" placeholder="Entrez l'email du contact" #email="ngModel"><br>
+          <div *ngIf="!isValidEmail(newContact.email) && (contactForm.submitted || email.dirty || email.touched)" style="color: red;margin-left: 10px;font-size: small;margin-top: -12px;margin-bottom: 10px;">
+            Veuillez entrer une adresse email valide.
+          </div>
+        </div></div><div style="display: flex;">
+          <div>
+          <label for="newContactAddress">Adresse :</label><br>
+          <input id="newContactAddress" [(ngModel)]="newContact.address" name="newContactAddress" placeholder="Entrez l'adresse du contact"><br>
+          </div><div>
+          <label for="professionId" style="margin-bottom: 5px;">Profession :</label>
+          <ng-select class="select" id="professionId" [(ngModel)]="newContact.profession.id" name="professionId" [items]="Professions" bindLabel="label" bindValue="id">
+            <ng-template ng-placeholder>Sélectionner une profession</ng-template>
+          </ng-select>
+        
+      <div *ngIf="!newContact.profession.id && (contactForm.submitted || contactForm.controls['professionId'].touched)" style="color: red; font-size: small;">Veuillez sélectionner une profession.</div>
+    </div></div>    
+      <label for="newContactNote">Note :</label><br>
+          <textarea id="newContactNote" [(ngModel)]="newContact.note" name="newContactNote" placeholder="Entrez une note"></textarea><br>
+
+      
+        </div>
+        <div style="width: 565px;background-color: #A9F4F9;margin-left: -20px;height: 70px;margin-top: 20px;">
+          <button type="submit" id="saveBtn" style="margin-top: 15px;margin-left: 450px;" [disabled]="isAdding">Ajouter</button> <!-- Texte en français -->
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

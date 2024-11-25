@@ -1,0 +1,28 @@
+<div id="modalBackgroundupdate" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="closeModalUpdate()">&times;</span>
+    <h3>Update Liste De Prix</h3>
+    <form (ngSubmit)="updateListeDePrix()">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" [(ngModel)]="updatedListeDePrix.name" name="name" required>
+
+        <label for="note">Note:</label>
+        <input type="text" id="note" [(ngModel)]="updatedListeDePrix.note" name="note">
+
+        <label for="price">Price:</label>
+        <input type="number" id="price" [(ngModel)]="updatedListeDePrix.price" name="price" required>
+
+        <label for="type">Type:</label>
+        <input type="text" id="type" [(ngModel)]="updatedListeDePrix.type" name="type" required>
+
+        <label for="unit">Unit:</label>
+        <input type="text" id="unit" [(ngModel)]="updatedListeDePrix.unit" name="unit" required>
+
+        <div style="background-color: #A9F4F9; padding: 20px;">
+          <button type="submit" class="save-btn">Update</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

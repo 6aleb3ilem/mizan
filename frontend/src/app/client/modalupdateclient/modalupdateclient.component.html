@@ -1,0 +1,44 @@
+<!-- modalupdateclient.component.html -->
+<div id="modalBackgroundupdate" class="modal">
+  <div>
+      <div class="modal-content">
+          <span class="close" id="closeModalBtn" (click)="closeModalUpdate()">&times;</span>
+          <h3>Modifier client</h3>
+          <hr style="width: 564px;margin-left: -20px;">
+          <form (ngSubmit)="updateClient()" #updateForm="ngForm">
+              <div class="iii" *ngIf="updatedClient">
+                <div style="display: flex;margin-top: 10px;">
+                    <div>
+
+                  <label for="ClientNom">Nom du client :</label>
+                  <input id="updatedClientName" [(ngModel)]="updatedClient.name" name="updatedClientName" required>
+
+                </div><div>
+                  <label for="ClientTel">Téléphone du client :</label>
+                  <input id="updatedClientTelephone" [(ngModel)]="updatedClient.telephone" name="updatedClientTelephone" required>
+                </div>
+            </div><div style="display: flex;">
+                <div>
+                  <label for="ClientEmail">Email du client :</label>
+                  <input id="updatedClientEmail" [(ngModel)]="updatedClient.email" name="updatedClientEmail" required>
+                </div><div>
+                  <label for="ClientAdress">Adresse du client :</label>
+                  <input id="updatedClientAddress" [(ngModel)]="updatedClient.address" name="updatedClientAddress" required>
+                </div>
+            </div>
+                  <label for="professionId" style="margin-bottom: 5px;">Statut :</label>
+          <!-- <div style="margin-left: 8px;"> -->
+          <select id="professionId" [(ngModel)]="updatedClient.status.id" name="professionId" >
+            <option *ngFor="let status of Status" [value]="status.id" [hidden]="status.tableref !== 'client'"> {{ status.label }} </option>
+          </select>
+          <!-- </div> -->
+                  <label style="margin-bottom: 20px;" for="ClientNote">Note du client :</label>
+                  <textarea id="updatedClientNote" [(ngModel)]="updatedClient.note" name="updatedClientNote" required></textarea>
+              </div>
+              <div style="width: 565px;background-color: #A9F4F9;margin-left: -20px;height: 70px;">
+                  <button type="submit" id="saveBtn" style="margin-top: 15px;margin-left: 430px;" (click)="updateClient()">Mettre à jour</button>
+              </div>
+          </form>    
+      </div>
+  </div>
+</div>

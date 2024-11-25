@@ -1,0 +1,6 @@
+target/
+*.angular/cache/15.2.10/angular-webpack/e211d92c19f30c3c1be5c899a5fdb2b2c098a084/15.pack
+*.angular/cache/
+node_modules
+*.log
+*.tmp

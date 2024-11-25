@@ -1,0 +1,51 @@
+<script src="node_modules/select2/dist/js/select2.min.js"></script>
+<div id="modalBackgroundupdate" class="modal">
+  <div>
+    <div class="modal-content">
+      <span class="close" id="closeModalBtn" (click)="closeModalUpdate()">&times;</span>
+      <h3>Mettre à jour le contact</h3>
+      <hr style="width: 564px;margin-left: -20px;">
+      <form (ngSubmit)="updateContact()" #updateForm="ngForm">
+        <div class="iii" *ngIf="updatedContact">
+          <div style="display: flex;">
+            <div>
+          <label for="updatedContactName">Nom du contact :</label>
+          <input id="updatedContactName" [(ngModel)]="updatedContact.name" name="updatedContactName" required #updatedContactName="ngModel">
+          <div *ngIf="updatedContactName.invalid && updatedContactName.touched" class="error"  style="color: red;margin-left: 10px;font-size: small;margin-top: -12px;margin-bottom: 10px;">Nom est requis.</div>
+        </div>
+        <div>
+          <label for="updatedContactWhatsApp">Numéro WhatsApp du contact :</label>
+          <input type="number" id="updatedContactWhatsApp" [(ngModel)]="updatedContact.whatsapp" name="updatedContactWhatsApp" required #updatedContactWhatsApp="ngModel">
+          <div *ngIf="updatedContactWhatsApp.invalid && updatedContactWhatsApp.touched" class="error"  style="color: red;margin-left: 10px;font-size: small;margin-top: -12px;margin-bottom: 10px;">Numéro WhatsApp est requis.</div>
+          
+        </div></div><div style="display: flex;">
+          <div>
+          <label for="updatedContactTelephone">Téléphone du contact :</label>
+          <input type="number" id="updatedContactTelephone" [(ngModel)]="updatedContact.telephone" name="updatedContactTelephone" >
+        </div>
+        <div>
+          <label for="updatedContactEmail">Email du contact :</label>
+          <input id="updatedContactEmail" [(ngModel)]="updatedContact.email" name="updatedContactEmail" >
+        </div></div><div style="display: flex;">
+          <div>
+          <label for="updatedContactAddress">Adresse du contact :</label>
+          <input id="updatedContactAddress" [(ngModel)]="updatedContact.address" name="updatedContactAddress" >
+        </div>
+        <div>
+          <label for="professionId">Profession du contact :</label>
+          <ng-select class="select" id="professionId" [(ngModel)]="updatedContact.profession.id" name="professionId" [items]="professions" bindLabel="label" bindValue="id">
+            <ng-template ng-placeholder>Sélectionner une profession</ng-template>
+          </ng-select>
+        </div></div> 
+          <label for="updatedContactNote">Note sur le contact :</label>
+          <textarea id="updatedContactNote" [(ngModel)]="updatedContact.note" name="updatedContactNote" ></textarea>
+
+
+        </div>
+        <div style="width: 565px;background-color: #A9F4F9;margin-left: -20px;height: 70px;">
+          <button type="submit" id="saveBtn" style="margin-top: 15px;margin-left: 210px;" [disabled]="updateForm.invalid">Mettre à jour</button>
+        </div>
+      </form>    
+    </div>
+  </div>
+</div>

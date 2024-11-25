@@ -1,0 +1,60 @@
+<!-- client.component.html -->
+<div style="margin-left: 50px; background-color: rgb(255, 252, 250); width: 87%; overflow: hidden;border: 1px solid rgb(234, 234, 234);margin-top: 50px;">
+    <ng-container *ngIf="isAdmin()">
+        <button style="background-color: red; font-size: small" class="action-button" (click)="openImportModal()">Importer</button>
+        <button style="background-color: green; font-size: small" class="action-button" (click)="exportToExcel()">Export</button>
+      </ng-container>
+    <div style="margin-left: 20px; margin-bottom: 20px;">
+        <div style="display: inline-block;">
+            <h2>Liste des clients</h2>
+        </div>
+        <div class="search-bar-wrapper" style="display: inline-block; margin-left: 52.7%; margin-top: 6px;">
+            <input class="search-bar" matInput placeholder="Rechercher..." (input)="applyFilter($event)">
+            <!-- Exemple si vous avez une icône de recherche -->
+            <i class="search-icon">🔍</i>
+          </div>
+        <div style="display: inline-block; margin-left: 2%;">
+            <button class="action-button" (click)="openModal()">+</button>
+        </div>
+        <table class="table">
+            
+            <tr>
+                <th (click)="sortData('name')">Nom du Client</th>
+                <th (click)="sortData('telephone')">Téléphone Client</th>
+                <th (click)="sortData('email')">Email Client</th>
+                <th (click)="sortData('address')">Adresse Client</th>
+                <th (click)="sortData('status')">Statut Client</th>
+                <th>Action</th>
+                <th>Contacts</th>
+                <th>Projets</th>
+
+            </tr>
+            <ng-container *ngIf="paginatedData.length > 0; else emptyTable">
+            <tr *ngFor="let client of paginatedData">
+                <td>{{ client.name }}</td>
+                <td>{{ client.telephone }}</td>
+                <td>{{ client.email }}</td>
+                <td>{{ client.address }}</td>
+                <td>{{ client.status.label }}</td>
+                <td>
+                    <img src="assets/icons8-edit.svg" alt="Modifier" (click)="openModalUpdate(client.id)" >
+                    <img src="assets/icons8-delete.svg" alt="Supprimer" (click)="openModalDelete(client.id)">
+                </td>
+                <td> <button  [routerLink]="['/client-contact', client.id]" class="view-projects-button"> Contacts</button></td>
+                <td> <button  [routerLink]="['/projets/client', client.id]" class="view-projects-button"> Projets</button></td>
+
+            </tr></ng-container>
+            <ng-template #emptyTable>
+                <tr>
+                    <td colspan="9" style="text-align: center;">La table est vide</td>
+                </tr>
+            </ng-template>
+        </table>
+    </div>
+    <mat-paginator [length]="dataSource.data.length" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons (page)="onPageChange($event)"></mat-paginator>
+    
+</div>
+<app-modaladdclient></app-modaladdclient>
+<app-modalupdateclient [updatedClient]="updatedClient ? updatedClient : null"></app-modalupdateclient>
+<app-modaldeleteclient></app-modaldeleteclient>
+<app-import-modalclient></app-import-modalclient>

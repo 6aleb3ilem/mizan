@@ -1,0 +1,21 @@
+<!-- modalupdateSituation.component.html -->
+<div id="modalBackgroundupdate" class="modal">
+    <div>
+        <div class="modal-content">
+          <span class="close" id="closeModalBtn" (click)="closeModalUpdate()">&times;</span>
+          <h3>Mettre à jour le situation</h3>
+          <hr style="width: 338.2px;margin-left: -20px;">
+          <form (ngSubmit)="updateSituation()" #updateForm="ngForm">
+            <div class="iii" *ngIf="updatedSituation">
+              <label for="SituationNom">Libellé du situation</label>
+              <input id="updatedSituationName" [(ngModel)]="updatedSituation.label" name="updatedSituationName" required>
+      
+            </div>
+            <div style="width: 113.5%;background-color: #A9F4F9;margin-left: -20px;height: 70px;">
+              <button situation="submit" id="saveBtn" style="margin-top: 15px;margin-left: 210px;" (click)="updateSituation()">Mettre à jour</button>
+            </div>
+          </form>    
+        </div>
+    </div>
+  </div>
+  

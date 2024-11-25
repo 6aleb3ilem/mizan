@@ -1,0 +1,39 @@
+<div style="margin-left: 50px; background-color: rgb(255, 252, 250); width: 87%; overflow: hidden;border: 1px solid rgb(234, 234, 234);margin-top: 50px;">
+    <div style="margin-left: 20px; margin-bottom: 20px;">
+        <div style="display: inline-block;">
+            <h2>Liste De Prix details</h2>
+        </div>
+        <div style="display: inline-block; margin-left: 65.8%;">
+          <button class="action-button" (click)="openModal()">+ Add New</button>
+
+        </div>
+        <table class="table">
+          <tr>
+            <th>Name</th>
+            <th>Note</th>
+            <th>Price</th>
+            <th>Type</th>
+            <th>Unit</th>
+            <th>Action</th>
+          </tr>
+          <tr *ngFor="let item of listeDePrixs">
+            <td>{{item.name}}</td>
+            <td>{{item.note}}</td>
+            <td>{{item.price}}</td>
+            <td>{{item.type}}</td>
+            <td>{{item.unit}}</td>
+            <td>
+<!-- Assuming 'item' represents a ListeDePrix object in a *ngFor loop -->
+<img src="assets/icons8-edit.svg" alt="Edit" (click)="item.id !== undefined ? openModalUpdate(item.id):null">
+<img src="assets/icons8-delete.svg" alt="Delete" (click)="item.id !== undefined ? openModalDelete(item.id) : null">
+
+
+        </td>
+    </tr>
+
+</table>
+</div>
+</div>
+<app-modal-add-liste-de-prix></app-modal-add-liste-de-prix>
+<app-modaldeleteliste-de-prix></app-modaldeleteliste-de-prix>
+<app-modal-update-liste-de-prix></app-modal-update-liste-de-prix>

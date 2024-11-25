@@ -1,0 +1,70 @@
+<!-- item.component.html -->
+<div style="margin-left: 50px; background-color: rgb(255, 252, 250); width: 87%; overflow: hidden;border: 1px solid rgb(234, 234, 234);margin-top: 50px;">
+    <ng-container *ngIf="isAdmin()">
+        <button style="background-color: red; font-size: small" class="action-button" (click)="openImportModal()">Importer</button>
+        <button style="background-color: green; font-size: small" class="action-button" (click)="exportToExcel()">Export</button>
+      </ng-container>
+    <div style="margin-left: 20px; margin-bottom: 20px;">
+        <div style="display: inline-block;">
+            <h2>Liste des éléments du devis</h2>
+        </div>
+        <div class="search-bar-wrapper" style="display: inline-block; margin-left: 43.2%; margin-top: 6px;">
+            <input class="search-bar" matInput placeholder="Rechercher..." (input)="applyFilter($event)">
+            <!-- Exemple si vous avez une icône de recherche -->
+            <i class="search-icon">🔍</i>
+          </div>
+        <div style="display: inline-block; margin-left: 2%;">
+            <button class="action-button" (click)="openModal()">+</button>
+        </div>
+        <table class="table">
+            <tr>
+                <th (click)="sortData('refEdevis')">Identifiant</th>
+
+                <th (click)="sortData('elementNote')">Nom </th>
+
+                <th (click)="sortData('elementQty')">Quantité </th>
+                <th (click)="sortData('elementStatus')">Statut </th>
+                <th>Note</th>
+                <th>Nombre de lots</th>
+                <th>montant</th>
+                <th>prix_unitaire</th>
+                <th>qte_lots</th>
+                <th>type</th>
+                <th>unite</th>
+<!-- <th>element</th> -->
+                <th>Action</th>
+            </tr><ng-container *ngIf="paginatedData.length > 0; else emptyTable">
+            <tr *ngFor="let Item of paginatedData">
+                <td>{{ Item.refEdevis }}</td>
+                <td>{{ Item.name }}</td>
+
+                <td>{{ Item.elementQty }}</td>
+                <td>{{ Item.status.label }}</td>
+                <td>{{ Item.elementNote }}</td>
+
+                <td>{{ Item.nbreLots }}</td>
+                <td>{{ Item.montant }}</td>
+                <td>{{ Item.prix_unitaire }}</td>
+                <td>{{ Item.qteLots }}</td>
+                <td>{{ Item.type }}</td>
+                <td>{{ Item.unite }}</td>
+                                <!-- <td>{{Item.unite }}</td> -->
+
+                <td>
+                    <img src="assets/icons8-edit.svg" alt="Modifier" (click)="openModalUpdate(Item.id)" >
+                    <img src="assets/icons8-delete.svg" alt="Supprimer" (click)="openModalDelete(Item.id)">
+                </td>
+            </tr></ng-container>
+            <ng-template #emptyTable>
+                <tr>
+                    <td colspan="12" style="text-align: center;">La table est vide</td>
+                </tr>
+            </ng-template>
+        </table>
+    </div>
+    <mat-paginator [length]="dataSource.data.length" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons (page)="onPageChange($event)"></mat-paginator>
+</div>
+<app-modaladditem></app-modaladditem>
+<app-modalupdateitem [updatedItem]="updatedItem ? updatedItem : null"></app-modalupdateitem>
+<app-modaldeleteitem></app-modaldeleteitem>
+<app-import-modalitem [taskId]="TaskId!"  [ElementId]="ElementId!"></app-import-modalitem>

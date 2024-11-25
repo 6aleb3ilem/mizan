@@ -1,0 +1,91 @@
+<!-- modalUpdateItemDevis.component.html -->
+<div id="modalBackgroundupdate" class="modal">
+  <div>
+      <div class="modal-content">
+          <span class="close" id="closeModalBtn" (click)="closeModalUpdate()">&times;</span>
+          <h3>Modifier Élément du Devis</h3>
+          <hr style="width: 564.2px;margin-left: -20px;">
+          <form #updateForm="ngForm">
+              <div class="iii" *ngIf="updatedItem">
+
+                    <div style="display: flex;">
+                    <div style="display: inline-block;">
+                    <label style="margin-bottom: 10px;" for="element">Nom de l'element :</label>
+                    
+                    <ng-select class="select" id="element" name="newelement" (change)="onElementChange($event)">
+                      <ng-option  [value]="initializeSelectedItem()">{{updatedItem.name}}</ng-option>
+                      <ng-container *ngFor="let element of elements">
+                        <ng-option *ngIf="element.name !== updatedItem.name" [value]="element.id">
+                          {{ element.name }}
+                        </ng-option>
+                      </ng-container>
+                    
+                    </ng-select>
+                    </div>
+                    <div style="display: inline-block;">
+                      <label for="elementStatus">Type  de l'élément :</label>
+                      <input  type="text" id="elementType" [(ngModel)]="updatedItem.type" name="newelementype" placeholder="Entrez le type de l'élément" readonly>
+                    </div></div>
+                    <div style=" margin-bottom: 40px;display: flex;">
+                      <div style="display: inline-block;">
+                      <label style="margin-top: -2px;"  for="unite">Unité de l'élément :</label>
+                      <select style="margin-top: 3px;" class="select" id="unite" [(ngModel)]="updatedItem.unite" name="newelementUnite" (change)="onUniteChange(updatedItem.elementid, $any($event.target).value)" >
+                        <option *ngIf="updatedItem.unite"  [value]=" updatedItem.unite ">{{ updatedItem.unite }}</option>
+
+                        <option *ngFor="let unite of filteredUnites" [value]="unite.unite" [selected]=" updatedItem.unite ">{{ unite.unite }}</option>                    </select> 
+                      <label style="margin-top: 11px;" for="prix_unitaire">Le prix unitaire de l'élément :</label>
+                      <input type="number" [(ngModel)]="updatedItem.prix_unitaire" name="newelementPrixUnitaire" id="elementPrixUnitaire" placeholder="Entrez Le prix unitaire" (ngModelChange)="calculateMontant()  ">                
+                                    
+                    </div>
+                      <div style="display: inline-block;">
+                      <label for="elementQty">Quantité de l'élément :</label>
+                      <input type="number" id="elementQty" [(ngModel)]="updatedItem.elementQty" name="newelementQty" placeholder="Entrez la quantité de l'élément" (ngModelChange)="calculateMontant()">
+                      <label for="montant">Montant de l'élément :</label>
+                      <input type="number" disabled="" [(ngModel)]="updatedItem.montant" name="newelementMontant" id="elementMontant" placeholder="Entrez le montant de l'élément">
+                    </div></div><div style="margin-top: -40px;">
+                      <div style="display: inline-block;">
+                      <label for="montant">nbreLots de l'élément :</label>
+                      <input type="number"  [(ngModel)]="updatedItem.nbreLots" name="newelementnbreLots" id="elementnbreLots" placeholder="Entrez le nbreLots de l'élément" (ngModelChange)="calculateMontant()">
+                    </div><div style="display: inline-block;">
+                      
+                      
+                      <label for="elementStatus">Statut de l'élément du devis :</label>
+                      <select class="select" id="statusId" [(ngModel)]="updatedItem.status.id" name="statusId">
+                        <option *ngFor="let status of Status" [value]="status.id" [hidden]="status.tableref !== 'elementdevis'">{{ status.label }}</option>
+                      </select>                     </div></div>
+                      <label for="elementNote">Note de l'élément :</label>
+                      <textarea [(ngModel)]="updatedItem.elementNote" name="newelementNote" id="elementNote" placeholder="Entrez la note de l'élément">
+                      </textarea>       
+                    </div>
+                    <!-- <label for="elementqteLots">qteLots  de l'élément :</label> -->
+                    <!-- <input type="hidden" id="elementType" [(ngModel)]="updatedItem.qteLots" name="newelementqteLots"  placeholder="Entrez le qteLots de l'élément" > -->
+       
+
+
+
+
+
+
+
+<!-- 
+                test
+                  <label for="elementNote">Note de l'élément :</label>
+                  <input type="text" [(ngModel)]="updatedItem.elementNote" name="newelementNote" id="elementNote">
+
+                  <label for="elementQty">Quantité de l'élément :</label>
+                  <input type="text" id="elementQty" [(ngModel)]="updatedItem.elementQty" name="newelementQty">
+
+                  <label for="elementStatus">Statut de l'élément :</label>
+                  <input type="text" id="elementStatus" [(ngModel)]="updatedItem.elementStatus" name="newelementStatus">
+
+                  <label for="elementStatus">nbreLots de l'élément :</label>
+                  <input type="text" id="elementStatus" [(ngModel)]="updatedItem.nbreLots" name="newelementnbreLots">
+           
+              </div> -->
+              <div style="width: 107.7%;background-color: #A9F4F9;margin-left: -20px;height: 70px;">
+                  <button type="submit" id="saveBtn" style="margin-top: 15px;margin-left: 445px;" (click)="updateItem()">Mettre à jour</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>

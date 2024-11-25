@@ -1,0 +1,51 @@
+<!-- sidebar.component.html -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<nav *ngIf="!navService.isHomePage">
+  <div class="navbar-container">
+    <div class="logo">
+      <img style="margin-bottom: -50px;" src="assets/logo.png" alt="Logo de l'application">
+      <button style="margin-left: 1480px;margin-bottom: 10px;" mat-icon-button (click)="openLogoutModal()">
+        <mat-icon>logout</mat-icon>
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+<div class="sidebar" *ngIf="!navService.isHomePage">
+  <div class="restbutton">
+    <a routerLink="/page1">Accueil</a> 
+    <a routerLink="/dashboard">Dashboard</a> 
+    <a routerLink="/contact">Contacts</a> 
+    <a routerLink="/client">Clients</a>
+    <a routerLink="/projets">Projets</a>
+    <a routerLink="/devis">Devis</a>
+
+    <a *ngIf="hasRole('SUPERADMIN')|| hasRole('ADMIN')" routerLink="/usermanegement">Users</a>
+    <a (click)="toggleReferences()" *ngIf="hasRole('SUPERADMIN') || hasRole('ADMIN')">Références <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+    <div *ngIf="showReferences" class="reference-links">
+      <a *ngIf="hasRole('SUPERADMIN') || hasRole('ADMIN')" routerLink="/type">Type</a>
+      <a *ngIf="hasRole('SUPERADMIN') || hasRole('ADMIN')" routerLink="/unite">Unite</a>
+      <a *ngIf="hasRole('SUPERADMIN') || hasRole('ADMIN')" routerLink="/element">Element</a>
+      <a *ngIf="hasRole('SUPERADMIN') || hasRole('ADMIN')" routerLink="/status">Status</a>
+      <a *ngIf="hasRole('SUPERADMIN') || hasRole('ADMIN')" routerLink="/priorite">Priorite</a>
+      <a *ngIf="hasRole('SUPERADMIN') || hasRole('ADMIN')" routerLink="/situation">Situation</a>
+      <a *ngIf="hasRole('SUPERADMIN') || hasRole('ADMIN')" routerLink="/profession">Profession</a>
+      <a *ngIf="hasRole('SUPERADMIN') || hasRole('ADMIN')" routerLink="/bcts">BCT</a>
+      <a *ngIf="hasRole('SUPERADMIN') || hasRole('ADMIN')" routerLink="/tacheref">Tache</a>
+      <!-- <a *ngIf="hasRole('SUPERADMIN') || hasRole('ADMIN')" routerLink="/condition-p">Condition</a> -->
+    </div>
+  </div>
+</div>
+<!-- Logout Confirmation Modal -->
+<div id="logoutModal" class="modal" *ngIf="showLogoutModal">
+  <div class="modal-content">
+    <span class="close" (click)="closeLogoutModal()">&times;</span>
+    <p>Êtes-vous sûr de vouloir vous déconnecter?</p>
+    <button (click)="confirmLogout()">Oui</button>
+    <button (click)="closeLogoutModal()">Non</button>
+  </div>
+</div>
+<div class="main-content">
+  <router-outlet></router-outlet>
+</div>

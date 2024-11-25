@@ -1,0 +1,32 @@
+<div id="modalBackground"  class="modal">
+    <div>
+    <div class="modal-content">
+      <span class="close" id="closeModalBtn" (click)="closeModal()">&times;</span>
+      <h3>Add devis</h3>
+      <hr style="width: 338.2px;margin-left: -20px;">
+      <div class="iii">
+        <label for="ProjetId">Projet Id:</label>
+        <input type="text" id="ProjetId" placeholder="Entrez Projet Id">
+  
+        <label for="DevisDate">Devis Date:</label>
+        <input type="date" id="DevisDate" placeholder="Entrez Devis Date">
+  
+        <label for="DevisMontant"> Montant de remise:</label>
+        <input type="text" id="DevisMontant" [(ngModel)]="devisMontant" (ngModelChange)="updateFieldStatus()" [disabled]="disableDevisMontant" placeholder="Entrez Devis Montant">
+  
+        <label for="Remise">Pourcentage de remise:</label>
+        <input type="text" id="Remise" [(ngModel)]="remise" (ngModelChange)="updateFieldStatus()" [disabled]="disableRemise" placeholder="Entrez Remise">
+
+        <label for="DevisStatus">Devis Status:</label>
+        <input type="text" id="DevisStatus" placeholder="Entrez Devis Status">
+
+        <label for="DevisNote">Devis Note:</label>
+        <input type="text" id="DevisNote" placeholder="Entrez Devis Note">
+      </div>
+      <div style="width: 113.5%;background-color: #A9F4F9;margin-left: -20px;height: 70px;">
+        <button id="saveBtn" style="margin-top: 15px;margin-left: 230px;">Add</button>
+      </div>
+    </div>
+</div>
+  </div>
+  

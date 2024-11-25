@@ -1,0 +1,44 @@
+<!-- DevisconditionP.component.html-->
+<div style="margin-left: 50px; background-color: rgb(255, 252, 250); width: 87%; overflow: hidden;border: 1px solid rgb(234, 234, 234);margin-top: 50px;">
+    <div style="display: inline-block; margin-left: 2%;">
+        <button style="background-color: red;font-size: small" class="action-button" (click)="openImportModal()">Importer</button>
+        <button style="background-color: green;font-size: small" class="action-button" (click)="exportToExcel()">Export</button>
+    </div>
+    <div style="margin-left: 20px; margin-bottom: 20px;">
+        <div style="display: inline-block;">
+            <h2>Liste des conditions</h2>
+        </div>
+        <div class="search-bar-wrapper" style="display: inline-block; margin-left: 56%; margin-top: 6px;">
+            <input class="search-bar" matInput placeholder="Rechercher..." (input)="applyFilter($event)">
+            <!-- Exemple si vous avez une icône de recherche -->
+            <i class="search-icon">🔍</i>
+          </div>
+        <div style="display: inline-block; margin-left: 2%;">
+            <button class="action-button" (click)="openModal()">+</button>
+        </div>
+<table class="table">
+    <tr>
+        <th (click)="sortData('conditionP')">Nom du conditionP</th>
+        <th (click)="sortData('devis')">Nom du devis</th>
+        <th>Action</th>
+    </tr><ng-container *ngIf="paginatedData.length > 0; else emptyTable">
+    <tr *ngFor="let DevisconditionP of paginatedData">
+        <td>{{ DevisconditionP.conditionp.label }}</td>
+        <td>{{ DevisconditionP.devis.ref_devis }}</td>
+        <td>
+            <img src="assets/icons8-edit.svg" alt="Edit" (click)="openModalUpdate(DevisconditionP.id)" >
+            <img src="assets/icons8-delete.svg" alt="Delete" (click)="openModalDelete(DevisconditionP.id)">
+        </td>
+    </tr></ng-container>
+    <ng-template #emptyTable>
+        <tr>
+            <td colspan="9" style="text-align: center;">La table est vide</td>
+        </tr>
+    </ng-template>
+</table>
+</div>
+<mat-paginator [length]="dataSource.data.length" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons (page)="onPageChange($event)"></mat-paginator>
+</div>
+<app-modaladdconditiondevis [devisId]="devisId"></app-modaladdconditiondevis>
+<app-modalupdateconditiondevis></app-modalupdateconditiondevis>
+<app-modaldeleteconditiondevis></app-modaldeleteconditiondevis>

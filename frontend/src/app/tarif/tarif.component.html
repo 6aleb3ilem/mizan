@@ -1,0 +1,55 @@
+<div style="margin-left: 50px; background-color: rgb(255, 252, 250); width: 87%; overflow: hidden;border: 1px solid rgb(234, 234, 234);margin-top: 50px;">
+    <!-- <div style="display: inline-block; margin-left: 2%;">
+        <button style="background-color: red;font-size: small" class="action-button" (click)="openImportModal()">Importer</button>
+        <button style="background-color: green;font-size: small" class="action-button" (click)="exportToExcel()">Export</button>
+    </div> -->
+    <div style="margin-left: 20px; margin-bottom: 20px;">
+        <div style="display: inline-block;">
+            <h2>Liste des tarifs</h2>            
+        </div>
+        <div class="search-bar-wrapper" style="display: inline-block; margin-left: 53.5%; margin-top: 6px;">
+            <input class="search-bar" matInput placeholder="Rechercher..." (input)="applyFilter($event)">
+            <!-- Exemple si vous avez une icône de recherche -->
+            <i class="search-icon">🔍</i>
+          </div>
+        <div style="display: inline-block; margin-left: 2%; margin-top: 6px;">
+            <button class="action-button" (click)="openModal()">+</button>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th (click)="sortData('id')">Id du tarif</th>
+                    <th (click)="sortData('prix')">Prix du tarif</th>
+                    <th (click)="sortData('isPrincipal')">Est principal</th>
+                    <th (click)="sortData('element')">Élément du tarif</th>
+                    <th (click)="sortData('unite')">Unité du tarif</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody><ng-container *ngIf="paginatedData.length > 0; else emptyTable">
+                <tr *ngFor="let tarif of paginatedData">
+                    <td>{{ tarif.id }}</td>
+                    <td>{{ tarif.pritunit }}</td>
+                    <td>{{ tarif.principal ? 'Oui' : 'Non' }}</td>
+                    <td>{{ tarif.element.name }}</td>
+                    <td>{{ tarif.unite.unite }}</td>
+                    <td>
+                        <img src="assets/icons8-edit.svg" alt="Edit" (click)="openModalUpdate(tarif.id)">
+                        <img src="assets/icons8-delete.svg" alt="Delete" (click)="openModalDelete(tarif.id)">
+                    </td>
+                </tr></ng-container>
+                <ng-template #emptyTable>
+                    <tr>
+                        <td colspan="9" style="text-align: center;">La table est vide</td>
+                    </tr>
+                </ng-template>
+            </tbody>
+        </table>
+        <!-- Paginator Component -->
+        <mat-paginator [length]="dataSource.data.length" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons (page)="onPageChange($event)"></mat-paginator>
+    </div>
+</div>
+<app-modaladdtarif [elementId]="elementId"></app-modaladdtarif>
+<app-modalupdatetarif [updatedTarif]="updatedtarif ? updatedtarif : null" [elementId]="elementId"></app-modalupdatetarif>
+<app-modaldeletetarif></app-modaldeletetarif>
+<app-import-modaltarif></app-import-modaltarif>

@@ -1,0 +1,134 @@
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 101.4vh; /* Utilisez 100vh pour la pleine hauteur */
+    width: calc(85.6vw + 220px); /* Compensez la marge négative en augmentant la largeur */
+    background: linear-gradient(135deg, #FF833E, #A9F4F9);
+    margin: -30px 0 -20px -220px; /* Gardez les marges pour centrer correctement */
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    animation: fadeIn 1s ease-in-out;
+    width: 90%; /* Utilisez une largeur flexible */
+    max-width: 500px; /* Limitez la largeur maximale */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.logo {
+    width: 50%; /* Ajustez la taille de l'image */
+    max-width: 150px;
+    margin-bottom: 10px;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 2.5rem; /* Ajustez la taille de la police */
+    animation: textGlow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes textGlow {
+    from {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    }
+    to {
+        text-shadow: 0 0 20px rgba(255, 255, 255, 1);
+    }
+}
+
+p {
+    color: #555;
+    margin-bottom: 30px;
+    font-size: 1.2rem;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column; /* Passez en colonne pour les petits écrans */
+    gap: 10px;
+    margin-left: 7vw;
+}
+
+@media (min-width: 768px) {
+    .buttons {
+        flex-direction: row; /* Passez en ligne pour les grands écrans */
+    }
+}
+
+.buttons a {
+    text-decoration: none;
+    color: #fff;
+    background-color: #FF833E;
+    padding: 15px 30px; /* Ajustez le padding */
+    border-radius: 30px;
+    transition: background-color 0.3s, transform 0.3s;
+    font-size: 1.1rem; /* Ajustez la taille de la police */
+    text-align: center; /* Centre le texte */
+}
+
+.buttons a:hover {
+    background-color: #A9F4F9;
+    transform: translateY(-5px);
+}
+
+.buttons a:active {
+    transform: translateY(2px);
+}
+
+/* Media queries pour les téléphones */
+@media (max-width: 768px) {
+    :host {
+        height: 101vh; /* Utilisez 100vh pour la pleine hauteur */
+        width: 100vw; /* Utilisez toute la largeur de l'écran */
+        margin: 0; /* Supprimez les marges pour centrer correctement */
+        margin-left: -61.2vw;
+        margin-top: -10vw;
+    }
+
+    .container {
+        padding: 20px; /* Réduisez le padding pour les petits écrans */
+        width: 90%; /* Utilisez une largeur flexible */
+        max-width: 300px; /* Limitez la largeur maximale pour les petits écrans */
+    }
+
+    .logo {
+        width: 70%; /* Réduisez la taille de l'image pour les petits écrans */
+        max-width: 100px;
+    }
+
+    h1 {
+        font-size: 1.5rem; /* Réduisez la taille de la police pour les petits écrans */
+    }
+
+    p {
+        font-size: 1rem; /* Réduisez la taille de la police pour les petits écrans */
+    }
+
+    .buttons {
+        margin-left: 0; /* Supprimez la marge gauche sur les petits écrans */
+        width: 100%; /* Assurez-vous que les boutons prennent toute la largeur disponible */
+    }
+
+    .buttons a {
+        padding: 10px 20px; /* Réduisez le padding des boutons pour les petits écrans */
+        font-size: 0.9rem; /* Réduisez la taille de la police des boutons pour les petits écrans */
+    }
+}

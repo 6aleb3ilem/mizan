@@ -1,0 +1,18 @@
+<!-- modaladdunite.component.html -->
+<div id="modalBackground" class="modal">
+  <div class="modal-content">
+      <span class="close" id="closeModalBtn" (click)="closeModal()">&times;</span>
+      <h3>Ajouter une unité</h3>
+      <hr style="width: 338.2px;margin-left: -20px;margin-bottom: 10px;">
+      <form (submit)="addUnite()">
+      <div class="iii">
+     
+        <label for="newUniteName">Nom de l'unité :</label><br>
+        <input id="newUniteName" [(ngModel)]="newUnite.unite" name="newUniteName" required placeholder="Entrez le nom de l'unité"><br>
+      </div>
+      <div style="width: 113.5%;background-color: #A9F4F9;margin-left: -20px;height: 70px;">
+        <button id="saveBtn" style="margin-top: 15px;margin-left: 230px;"  (click)="addUnite()" [disabled]="isAdding">Ajouter</button>
+      </div>
+    </form>
+    </div>
+  </div>

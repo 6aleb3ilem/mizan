@@ -1,0 +1,80 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.table {
+    width: 98%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    background-color: #ffffff;
+}
+
+.table th {
+    background-color: #FF833E;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+
+.table tr:hover {
+    background-color: #ddd;
+}
+
+.action-button {
+    background-color: #A9F4F9;
+    padding: 10px 24px;
+    border-radius: 12px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border: none; /* Ajoutez cette ligne pour supprimer la bordure */
+} 
+.action-button:hover{
+    background-color: #78c8ce;;
+}
+img{
+    display: inline-block;
+    width: 22px;
+}
+
+.search-bar {
+    padding: 8px;
+    margin: 10px 0;
+    width: 250px; /* Vous pouvez ajuster la largeur selon vos besoins */
+    border: 1px solid #ccc;
+    border-radius: 4px; /* Bordures arrondies */
+  }
+  
+  /* Style pour l'encadrement de la barre de recherche */
+  .search-bar-wrapper {
+    display: inline-block;
+    margin-left: 57%;
+    margin-top: 6px;
+    position: relative; /* Positionnement relatif pour placer éventuellement une icône de recherche */
+  }
+  
+  /* Vous pouvez également ajouter un style pour l'icône de recherche si vous en avez une */
+  .search-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .view-projects-button {
+    background-color: #FF833E; /* Couleur d'arrière-plan du bouton */
+    color: white; /* Couleur du texte */
+    border: none; /* Aucune bordure */
+    padding: 5px 10px; /* Padding intérieur */
+    border-radius: 5px; /* Bordures arrondies */
+    cursor: pointer; /* Curseur en forme de pointeur */
+    transition: background-color 0.3s; /* Transition douce pour le survol */
+}

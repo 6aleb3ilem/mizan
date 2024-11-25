@@ -1,0 +1,9 @@
+<!-- import-modal.component.html -->
+<h1 mat-dialog-title>Importation de données</h1>
+<div mat-dialog-content>
+  <input type="file" (change)="onFileChange($event)">
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onImport()">Importer</button>
+  <button mat-button (click)="onClose()">Fermer</button>
+</div>

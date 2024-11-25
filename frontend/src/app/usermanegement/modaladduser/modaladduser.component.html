@@ -1,0 +1,28 @@
+<div id="modalBackground" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModalBtn" (click)="closeModal()">&times;</span>
+        <h3>Ajouter un utilisateur</h3>
+        <hr style="width: 338.2px;margin-left: -20px;margin-bottom: 10px;">
+    <form (submit)="createUser()">
+      <div>
+        <label for="name">Name</label>
+        <input type="text" id="name" [(ngModel)]="name" name="name" placeholder="Entrez le nom de l'utilisateur" required>
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" [(ngModel)]="email" name="email" placeholder="Entrez l'email de l'utilisateur" required>
+      </div>
+      <div>
+        <label for="role">role</label>
+        <select id="role" [(ngModel)]="role" name="role" required>
+            <option *ngIf="isSuperAdmin">ADMIN</option>
+            <option>Commercial</option>
+        </select>
+      </div>
+      <div style="width: 113.55%;background-color: #A9F4F9;margin-left: -20px;height: 70px;">
+      <button type="submit">Create User</button>
+      </div>
+    </form>
+</div>
+</div>
+  

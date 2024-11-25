@@ -1,0 +1,34 @@
+<!-- modaladdtarif.component.html -->
+<div id="modalBackground" class="modal">
+  <div class="modal-content">
+      <span class="close" id="closeModalBtn" (click)="closeModal()">&times;</span>
+      <h3>Ajouter Tarif</h3>
+      <form>
+        <div>
+          <label for="uniteId">Unité :</label>
+          <select id="uniteId" [(ngModel)]="newTarif.unite.id" name="uniteId" required (change)="onUniteChange()">
+            <option *ngFor="let unite of unites" [value]="unite.id">{{ unite.unite }}</option>
+          </select>                            
+          
+        </div>
+        <div>
+          <label>
+            <div style="display: inline-block;"><input type="checkbox" [(ngModel)]="newTarif.principal" (ngModelChange)="onPrincipalChange()" name="isPrincipal"/></div>
+            <div style="display: inline-block; margin-left: 20px;"> Unité Principale</div>
+          </label>
+        </div>
+        <div *ngIf="showPrincipalExistsWarning" style="color: red;margin-left: 12px;margin-bottom: 10px;">
+           il existe déjà un unité marqué comme principal.
+        </div>
+        
+        <div>
+          <label for="pritunit">Prix unitaire :</label>
+          <input id="pritunit" [(ngModel)]="newTarif.pritunit" name="pritunit" required placeholder="Entrez le prix unitaire">
+        </div>
+        
+        <div style="width: 113.5%;background-color: #A9F4F9;margin-left: -20px;height: 70px;">
+          <button (click)="addTarif()" style="margin-top: 15px;margin-left: 230px;">Ajouter</button>
+        </div>
+      </form>
+  </div>
+</div>

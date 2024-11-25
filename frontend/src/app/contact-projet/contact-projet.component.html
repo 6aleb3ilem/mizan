@@ -1,0 +1,47 @@
+<!-- Contact.component.html-->
+<div style="margin-left: 50px; background-color: rgb(255, 252, 250); width: 87%; overflow: hidden;border: 1px solid rgb(234, 234, 234);margin-top: 50px;">
+    <div style="margin-left: 20px; margin-bottom: 20px;">
+        <div style="display: inline-block;">
+            <h2>Contacts</h2>
+        </div>
+        <div style="display: inline-block; margin-left: 66%;">
+            <button class="action-button" (click)="openModal()">+ Ajouter Nouveau</button> <!-- Texte en français -->
+        </div>
+<table class="table">
+    <tr>
+        <th>Nom du Contact</th>
+        <th>WhatsApp du Contact</th>
+        <th>Téléphone du Contact</th>
+        <th>Email du Contact</th>
+        <th>Adresse du Contact</th> 
+ 
+        <th>Note du Contact</th> 
+        <th>Profession du Contact</th> 
+       
+
+        <th>Action</th>
+
+    </tr>
+    <tr *ngFor="let contact of contacts">
+        <td>{{ contact.name }}</td>
+        <td>{{ contact.whatsapp }}</td>
+        <td>{{ contact.telephone }}</td>
+        <td>{{ contact.email }}</td>
+        <td>{{ contact.address }}</td>
+        <td>{{ contact.note }}</td>
+        <td>{{ contact.profession.label }}</td>
+        
+         <!-- Ajoutez cette ligne pour afficher le numéro WhatsApp -->
+    
+        <td>
+            <img src="assets/icons8-edit.svg" alt="Modifier" >
+            <img src="assets/icons8-delete.svg" alt="Supprimer" (click)="openModalDelete(contact.id)">
+        </td>
+    </tr>
+</table>
+</div>
+</div>
+<app-modaladdcontact-projet [projectId]="selectedProjectId"></app-modaladdcontact-projet>
+
+<app-modalupdatecontact ></app-modalupdatecontact>
+<app-modaldeletecontact></app-modaldeletecontact>

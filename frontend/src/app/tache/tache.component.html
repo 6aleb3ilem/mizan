@@ -1,0 +1,62 @@
+<!-- tache.component.html -->
+<div style="margin-left: 50px; background-color: rgb(255, 252, 250); width: 87%; overflow: hidden;border: 1px solid rgb(234, 234, 234);margin-top: 50px;">
+    <ng-container *ngIf="isAdmin()">
+        <button style="background-color: red; font-size: small" class="action-button" (click)="openImportModal()">Importer</button>
+        <button style="background-color: green; font-size: small" class="action-button" (click)="exportToExcel()">Export</button>
+      </ng-container>
+    <div style="margin-left: 20px; margin-bottom: 20px;">
+        <div style="display: inline-block;">
+            <h2>Liste des tâches</h2>
+        </div>
+        <div class="search-bar-wrapper" style="display: inline-block; margin-left: 52.5%; margin-top: 6px;">
+            <input class="search-bar" matInput placeholder="Rechercher..." (input)="applyFilter($event)">
+            <!-- Exemple si vous avez une icône de recherche -->
+            <i class="search-icon">🔍</i>
+          </div>
+        <div style="display: inline-block; margin-left: 2%;">
+            <button class="action-button" (click)="openModal(projectId)">+</button>
+        </div>
+        <table class="table">
+            <tr>
+                <th (click)="sortData('refTask')">Référence de la tâche</th>
+                <th (click)="sortData('taskName')">Nom de la tâche</th>
+                <th (click)="sortData('start')">Début de la tâche</th>
+                <th (click)="sortData('deadline')" >Échéance de la tâche</th>
+                <th (click)="sortData('priority')">Priorité de la tâche</th>
+                <th (click)="sortData('status')">Statut de la tâche</th>
+                <th (click)="sortData('note')">Note de la tâche</th>
+                <th>Action</th>
+                <th >Éléments Devis</th>
+
+            </tr><ng-container *ngIf="paginatedData.length > 0; else emptyTable">
+            <tr *ngFor="let Tache of paginatedData">
+                <td>{{ Tache.refTask }}</td>
+                <td>{{ Tache.taskName }}</td>
+              
+
+                <td>{{ Tache.start | date: 'yyyy-MM-dd'}}</td>
+                <td>{{ Tache.deadline | date: 'yyyy-MM-dd'}}</td>
+                <td>{{ Tache.priority.label }}</td>
+                <td>{{ Tache.status.label }}</td>
+                <td>{{ Tache.note }}</td>
+                <td>
+                    <img src="assets/icons8-edit.svg" alt="Modifier" (click)="openModalUpdate(Tache.taskId)">
+                    <img src="assets/icons8-delete.svg" alt="Supprimer" (click)="openModalDelete(Tache.taskId)">
+                </td>
+                <td> <button  [routerLink]="['/Item', Tache.taskId]" class="view-projects-button">Eleéments </button></td>
+
+            </tr></ng-container>
+            <ng-template #emptyTable>
+                <tr>
+                    <td colspan="9" style="text-align: center;">La table est vide</td>
+                </tr>
+            </ng-template>
+        </table>
+    </div>
+    <mat-paginator [length]="dataSource.data.length" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons (page)="onPageChange($event)"></mat-paginator>
+
+</div>
+<app-modaladdtache></app-modaladdtache>
+<app-modalupdatetache [updatedTache]="updatedTache ? updatedTache : null"></app-modalupdatetache>
+<app-modaldeletetache></app-modaldeletetache>
+<app-import-modaltache [projectId]="projectId!"></app-import-modaltache>

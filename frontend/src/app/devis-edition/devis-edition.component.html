@@ -1,0 +1,143 @@
+<!-- devis-edition.component.html -->
+<br/><br/><br/>
+<button (click)="openDevisReport(devisId)">Generate Devis Report</button>
+
+<div id="devis-content" style="font-family: Arial, sans-serif;">
+  <div class="page-entete" style="position: relative; padding-bottom: 20px;">
+    <img src="assets/logo.png" style="width: 150px;" alt="Logo MIZAN LABS" />
+    <div style="position: relative; top: 0; left: 250px;">
+      <h1 style="margin:-500; font-size: 50px;">MIZAN LABS</h1>
+      <p style="margin: 0; font-size: large;">Laboratory and Engineering services</p>
+    </div>
+  </div>
+  <div style="margin-top: 20px;">
+    <div style="float: left; width: 50%;">
+      <p>Date : {{ devis?.date | date: 'yyyy-MM-dd' }}</p>
+      <p>Réf. : {{ devis?.ref_devis }}</p>
+    </div>
+    <div style="float: right; width: 50%; text-align: right;">
+      <h3>Client:</h3>
+      <p>{{ clientName }}</p>
+    </div>
+    <div style="clear: both;"></div>
+  </div>
+
+    <div class="inline-header">
+      <h3>Objet :</h3>
+      <p style="width: 380px">{{ concatenatedTaskNames + projectName}}</p>
+    </div><div>
+      <h3>Documents de référence :</h3>
+    <p> Demande de proposition du 10 Aout 2023</p>
+  </div>
+  <div>      <h3>Devis pour </h3>
+  </div>
+  <div *ngIf="tasks">
+  <table border="1" style="width: 100%;" >
+    <thead>
+      <tr>
+        <th>Désignation</th>
+        <th>Unité</th>
+        <th>Qte</th>
+        <th>Prix.unit(MRU)</th>
+        <th>Prix.Tot(MRU)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let task of tasks">
+        <tr><td colspan="5">Tâche: {{ task.taskName }}</td></tr>
+
+        <ng-container *ngFor="let type of types">
+          <!-- Utilisez *ngIf avec 'as' pour assigner le résultat filtré à une variable locale 'filteredElements' -->
+          <ng-container *ngIf="(elementDevisList[task.taskId] | filterByType: type.label) as filteredElements">
+            <!-- Assurez-vous que 'filteredElements' est utilisé uniquement à l'intérieur de ce ng-container -->
+            <p *ngIf="filteredElements.length > 0">Type:{{ type.label }}</p>
+            <ng-container *ngFor="let element of filteredElements">
+              <tr>
+                <td>{{ element.name }}</td>
+                <td>{{ element.unite }}</td>
+                <td>{{ element.qteLots }}</td>
+                <td>{{ element.prix_unitaire }}</td>
+                <td *ngIf="element.status.label !== 'PM'">{{ element.montant }}</td>
+                <td *ngIf="element.status.label=== 'PM'">PM</td></tr>
+            </ng-container>
+          </ng-container>
+        </ng-container>
+        <tr>
+          <td colspan="4">Total pour la tâche</td>
+          <td>{{ task.totalTask}}</td>
+        </tr>
+      </ng-container>
+      
+
+    </tbody>
+  </table>
+  </div>
+  <div>   
+     <div style="page-break-inside: avoid;">  
+      <table border="1" style="width: 100%;">
+
+
+      <tr>
+        <td colspan="4">MONTANT TOTAL EN MRU HT</td>
+        <td>{{ devis?.montant }}</td> <!-- Remplacez par une logique de calcul réelle -->
+      </tr>
+      <!-- Total pour tout le devis -->
+    <ng-container *ngIf="devis?.discount!=0 || devis?.discountp!=0 ">     
+
+      <tr>
+        <td colspan="4">Remise de </td>
+        <td>{{remise}}</td> <!-- Remplacez par une logique de calcul réelle -->
+      </tr>
+      <tr>
+        <td colspan="4">MONTANT APRES REMISE </td>
+        <td>{{ devis?.montantRemise }}</td> <!-- Remplacez par une logique de calcul réelle -->
+      </tr>
+    </ng-container>
+  <ng-container  *ngIf="devis?.tva_present">
+
+      <tr>
+        <td colspan="4">TVA (%) :</td>
+        <td>{{devis?.tva}}</td>
+      </tr>
+      <tr>
+
+        <td colspan="4">MONTANT TOTAL TTC (MRU)</td>
+        <td>{{ devis?.montantTva }}</td>
+     
+      </tr>
+    </ng-container>
+
+      </table>
+
+  <h3 style="margin-top: 70px;">Conditions de l'offre : </h3>
+    <p style="margin-left: 40px;">•	Date de démarrage : après validation et paiement </p>
+    <div *ngIf="devis?.remiserapport">
+      <div style="display: inline-block;">
+    <p style="margin-left: 40px;">•	Remise du rapport : </p>
+  </div><div style="display: inline-block;">
+    <p style="margin-left: -9px; ">{{devis?.remiserapport}}</p>
+  </div>
+  </div>
+    <p style="margin-left: 40px;">•	Modalités de paiement	:</p>
+    <p *ngIf="devis?.mp1" style="font-size:medium;margin-left: 80px;">{{devis?.mp1}}{{devis?.pmp1}} </p>
+    <p *ngIf="devis?.mp2" style="font-size:medium;margin-left: 80px;">{{devis?.mp2}}{{devis?.pmp2}} </p>
+    <p *ngIf="devis?.mp3" style="font-size:medium;margin-left: 80px;">{{devis?.mp3}}{{devis?.pmp3}} </p>
+    <p *ngIf="devis?.mp4" style="font-size:medium;margin-left: 80px;">{{devis?.mp4}}{{devis?.pmp4}} </p>
+    <p *ngIf="devis?.mp5" style="font-size:medium;margin-left: 80px;">{{devis?.mp5}}{{devis?.pmp5}} </p>
+
+  <div style="margin-left: 65%;">
+    <h3 style="margin-top: 30px;">Le Directeur</h3>
+    <p style="margin-bottom: 50px;">Lemrabott ELEYATT</p>
+  </div>
+  <div>
+    <h3 style="margin-top: 30px;">client:</h3>
+    <p style="margin-bottom: 80px;"></p>
+  </div>
+</div>
+
+</div>
+<div *ngIf="!tasks">
+  <p>Loading tasks...</p>
+</div>
+
+

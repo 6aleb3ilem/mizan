@@ -1,0 +1,33 @@
+<div id="modalBackground"  class="modal">
+  <div>
+
+    <div class="modal-content">
+      <span class="close" id="closeModalBtn" (click)="closeModal()">&times;</span>
+      <h3>ajouter liste de prix</h3>
+      <hr style="width: 338.2px;margin-left: -20px;margin-bottom: 10px;">
+
+    <form (submit)="addListeDePrix()">
+      <div class="iii">
+      <label for="name">Name:</label>
+      <input type="text" id="name" [(ngModel)]="newListeDePrix.name" name="name" required>
+
+      <label for="note">Note:</label>
+      <input type="text" id="note" [(ngModel)]="newListeDePrix.note" name="note">
+
+      <label for="price">Price:</label>
+      <input type="number" id="price" [(ngModel)]="newListeDePrix.price" name="price">
+
+      <label for="type">Type:</label>
+<select id="listeDePrixs" [(ngModel)]="newListeDePrix.type" name="type">
+  <option >espece</option>
+  <option >bankili</option>
+  <option >masrivi</option>
+</select>
+      <label for="unit">Unit:</label>
+      <input type="text" id="unit" [(ngModel)]="newListeDePrix.unit" name="unit">
+    </div><div style="width: 113.5%;background-color: #A9F4F9;margin-left: -20px;height: 70px;">
+      <button style="margin-top: 15px;margin-left: 230px;" type="submit">Add</button>
+    </div>
+    </form>
+  </div>
+</div>

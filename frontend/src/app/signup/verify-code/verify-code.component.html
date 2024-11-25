@@ -1,0 +1,30 @@
+<div class="verification-container">
+    <button class="back-button" (click)="goBack()">
+        <i class="fa fa-arrow-left"></i>
+      </button>
+    <form (ngSubmit)="verifyCode($event)" class="verification-form">
+        <div class="form-content">
+            <h2>Vérifier le Code</h2>
+            <div type="hidden" class="form-field">
+                <input type="hidden" id="email" name="email" [value]="email" readonly required>
+            </div>
+            <div class="form-field">
+                <label for="code">Code de Vérification</label>
+                <input type="text" id="code" [(ngModel)]="code" name="code" required>
+            </div>
+            <div class="form-buttons">
+                <button type="submit" *ngIf="!isResendEnabled">Vérifier</button>
+                <button type="button" *ngIf="isResendEnabled" (click)="resendCode()">Renvoyer le Code</button>
+            </div>
+            <div *ngIf="!isCodeValid && codeAttempted" class="error-message">
+                Le code de vérification est invalide ou a expiré.
+            </div>
+            <div class="timer">
+                Temps restant : {{ timeRemaining }}
+            </div>
+        </div>
+        <div class="form-image">
+            <img src="assets/signup.png" alt="Logo de l'Application">
+        </div>
+    </form>
+</div>

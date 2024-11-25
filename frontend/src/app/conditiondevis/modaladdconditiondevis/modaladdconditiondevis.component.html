@@ -1,0 +1,23 @@
+<!-- modaladdConditiondevis.component.html -->
+<div id="modalBackground" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModalBtn" (click)="closeModal()">&times;</span>
+        <h3>Ajouter conditionp</h3>
+        <form>
+          <div>
+            <label for="conditionpId">Contact :</label>
+            <select id="conditionpId" [(ngModel)]="newConditiondevis.conditionp.id" name="conditionpId" required>
+              <option *ngFor="let conditionp of conditionps" [value]="conditionp.id">{{ conditionp.label }}</option>
+            </select>
+            
+          </div>
+          <div *ngIf="showPrincipalExistsWarning" style="color: red;margin-left: 12px;margin-bottom: 10px;">
+             il existe déjà un conditionp marqué comme principal.
+          </div>
+          
+          <div style="width: 113.5%;background-color: #A9F4F9;margin-left: -20px;height: 70px;">
+          <button (click)="addconditionpdevis()" style="margin-top: 15px;margin-left: 230px;">Ajouter</button></div>
+        </form>
+    </div>
+  </div>
+  

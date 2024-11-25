@@ -1,0 +1,19 @@
+<!-- modaladdunite.component.html -->
+<div id="modalBackground" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModalBtn" (click)="closeModal()">&times;</span>
+        <h3>Ajouter une tache</h3>
+        <hr style="width: 338.2px;margin-left: -20px;margin-bottom: 10px;">
+        <form (submit)="addtacheref()">
+        <div class="iii">
+       
+          <label for="newBCTName">Nom de la tache :</label><br>
+          <input id="newBCTName" [(ngModel)]="newtacheref.label" name="newUniteName" required placeholder="Entrez le nom de la tache"><br>
+        </div>
+        <div style="width: 113.5%;background-color: #A9F4F9;margin-left: -20px;height: 70px;">
+          <button id="saveBtn" style="margin-top: 15px;margin-left: 230px;"  (click)="addtacheref()" [disabled]="isAdding">Ajouter</button>
+        </div>
+      </form>
+      </div>
+    </div>
+  

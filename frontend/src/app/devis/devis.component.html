@@ -1,0 +1,49 @@
+<!-- Contact.component.html-->
+<div style="margin-left: 50px; background-color: rgb(255, 252, 250); width: 87%; overflow: hidden;border: 1px solid rgb(234, 234, 234);margin-top: 50px;">
+    <div style="margin-left: 20px; margin-bottom: 20px;">
+        <div style="display: inline-block;">
+            <h2>Devis details</h2>
+        </div>
+        <div class="search-bar-wrapper" style="display: inline-block; margin-left: 60%; margin-top: 6px;">
+            <input class="search-bar" matInput placeholder="Rechercher..." (input)="applyFilter($event)">
+            <!-- Exemple si vous avez une icône de recherche -->
+            <i class="search-icon">🔍</i>
+          </div>
+          <table class="table">
+            <tr>
+                <th (click)="sortData('ref_devis')">Ref du Devis</th>
+                <th (click)="sortData('date')">Date du Devis</th>
+                <th (click)="sortData('montant_remise')">Montant Remise</th>
+                <th (click)="sortData('montant_ht')">Montant Hors tax</th>
+                <th (click)="sortData('montant_TTC')">Montant TTC</th>
+                <th (click)="sortData('discountp')">Remise du Devis %</th>
+                <th (click)="sortData('discount')">Remise du Devis</th>
+                <th >Projet du Devis</th>
+                <th>Client du Devis</th>
+                <th>Détails du Devis</th>
+            </tr><ng-container *ngIf="paginatedData.length > 0; else emptyTable">
+            <tr *ngFor="let devis of paginatedData">
+                <td>{{ devis.ref_devis }}</td>
+                <td>{{ devis.date | date: 'yyyy-MM-dd'}}</td>
+                <td>{{ devis.montantRemise }}</td>
+                <td>{{ devis.montant }}</td>
+                <td>{{ devis.montantTva }}</td>
+                <td>{{ devis.discountp }}</td>
+                <td>{{ devis.discount }}</td>
+                <td>{{ devis.clientName }}</td>
+
+                <td> {{ devis.projectName }}</td>
+                <td>
+                    <button [routerLink]="['/devis-edition', devis.devisId]" class="view-projects-button">Imprimer</button>
+                </td>
+            </tr></ng-container>
+            <ng-template #emptyTable>
+                <tr>
+                    <td colspan="10" style="text-align: center;">La table est vide</td>
+                </tr>
+            </ng-template>
+        </table>
+        
+</div>
+<mat-paginator [length]="dataSource.data.length" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons (page)="onPageChange($event)"></mat-paginator>
+</div>

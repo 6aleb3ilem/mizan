@@ -1,0 +1,19 @@
+<div id="modalBackground" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModalBtn" (click)="closeModal()">&times;</span>
+        <h3>Ajouter un contact au projet</h3>
+        <form>
+            <label for="contact-projet">Sélectionner un contact :</label><br>
+            <select [(ngModel)]="selectedContactId" id="contact-projet" name="contact-projet" required>
+                <option *ngFor="let contact of contacts" [value]="contact.id">{{ contact.name }}</option>
+              </select>
+              
+            <label for="newClientName">Nom du Client :</label><br>
+            <input id="newClientName" name="newClientName" [(ngModel)]="clientName" disabled><br>
+  
+            <div style="width: 113.5%;background-color: #A9F4F9;margin-left: -20px;height: 70px;">
+                <button (click)="onAddContactToProject()" style="margin-top: 15px;margin-left: 230px;">Ajouter</button>
+            </div>
+        </form>
+    </div>
+</div>

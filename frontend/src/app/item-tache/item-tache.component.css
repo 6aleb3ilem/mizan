@@ -1,0 +1,48 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.table {
+    width: 98%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    background-color: #ffffff;
+}
+
+.table th {
+    background-color: #FF833E;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+
+.table tr:hover {
+    background-color: #ddd;
+}
+
+.action-button {
+    background-color: #A9F4F9;
+    padding: 10px 24px;
+    border-radius: 12px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border: none; /* Ajoutez cette ligne pour supprimer la bordure */
+} 
+.action-button:hover{
+    background-color: #78c8ce;;
+}
+img{
+    display: inline-block;
+    width: 22px;
+}
+
